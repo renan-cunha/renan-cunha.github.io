@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI on Renan Cunha</title>
+    <link>https://renan-cunha.github.io/categories/ai/</link>
+    <description>Recent content in AI on Renan Cunha</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Your Copyright</copyright>
+    <lastBuildDate>Mon, 24 Feb 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://renan-cunha.github.io/categories/ai/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A very short Intro to Contextual Bandits</title>
+      <link>https://renan-cunha.github.io/posts/contextual-bandits/</link>
+      <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://renan-cunha.github.io/posts/contextual-bandits/</guid>
+      <description>In the contextual bandits problem, we have an environment with K possible actions. The environment returns some context x, taken from a distribution X. The environment also has a function f(x, k), that calculates the reward based on the context and the chosen action k.
+The goal then is to find the policy $\pi$ that maximizes the rewards obtained in the long-term. A policy is a function that maps contexts to actions.</description>
+    </item>
+    
+  </channel>
+</rss>
