@@ -6,10 +6,20 @@
     <description>Recent content in AI on Renan Cunha</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Your Copyright</copyright>
-    <lastBuildDate>Mon, 24 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://renan-cunha.github.io/categories/ai/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Brainstorming Benchmarks for Contextual Bandits</title>
+      <link>https://renan-cunha.github.io/posts/benchmark/</link>
+      <pubDate>Tue, 25 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://renan-cunha.github.io/posts/benchmark/</guid>
+      <description>Since contextual bandits are relatively new, they haven&amp;rsquo;t been studied and tested so heavily as standard multi-armed bandits algorithms [1]. This being the case, it&amp;rsquo;s useful to design benchmarks for contextual bandits so these algorithms can be reliably tested, compared and improved.
+Prerequisites  Contextual Bandits  Simplest benchmark As many people in the AI community advice, a toy example with low complexity provides better and faster debugging cycles, a good property of early-stage research and experimentation.</description>
+    </item>
     
     <item>
       <title>A very short Intro to Contextual Bandits</title>

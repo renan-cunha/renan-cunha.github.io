@@ -87,9 +87,9 @@
 			<p>Recent Posts:</p>
 			<ul>
 				
-				<li><a href="https://renan-cunha.github.io/posts/contextual-bandits/">A very short Intro to Contextual Bandits</a></li>
-				
 				<li><a href="https://renan-cunha.github.io/categories/ai/">AI</a></li>
+				
+				<li><a href="https://renan-cunha.github.io/posts/benchmark/">Brainstorming Benchmarks for Contextual Bandits</a></li>
 				
 				<li><a href="https://renan-cunha.github.io/categories/">Categories</a></li>
 				
@@ -111,6 +111,131 @@
 			</div>
 			<div class="col-sm-7 col-sm-offset-4 col-md-6 col-md-offset-3 col-lg-5 col-lg-offset-3 content">
 
+				
+				<div class="post">
+
+					<div class="post-heading">
+						<h1><a href="https://renan-cunha.github.io/posts/benchmark/">Brainstorming Benchmarks for Contextual Bandits</a></h1>
+						<span>Feb 25, 2020</span>
+					</div>
+
+					<p>Since contextual bandits are relatively new, they haven&rsquo;t been studied and tested
+so heavily as standard multi-armed bandits algorithms [1]. This being
+the case, it&rsquo;s useful to design benchmarks for contextual bandits so these
+algorithms can be reliably tested, compared and improved.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><a href="https://renan-cunha.github.io/posts/contextual-bandits/"><strong><em>Contextual Bandits</em></strong></a></li>
+</ul>
+<h2 id="simplest-benchmark">Simplest benchmark</h2>
+<p>As <a href="https://twitter.com/pcastr/status/1226661835971145731"><strong><em>many</em></strong></a>
+<a href="https://twitter.com/karpathy/status/1013244313327681536"><strong><em>people</em></strong></a> in the
+AI community <a href="https://rockt.github.io/2018/08/29/msc-advice"><strong><em>advice</em></strong></a>, a toy
+example with low complexity provides better and faster
+<a href="https://ai.stanford.edu/~zayd/why-is-machine-learning-hard.html"><strong><em>debugging cycles</em></strong></a>,
+a good property of early-stage research and experimentation. So now, let&rsquo;s try to imagine the simplest benchmark for the contextual bandits
+problem. First, let&rsquo;s
+use binary everywhere.
+Second, let&rsquo;s make the environment deterministic (an action <em>k</em> with context <em>x</em>
+always returns the same reward <em>r</em>). Third and finally, let&rsquo;s make
+the reward function <em>f(x, k</em>) as simple as possible. Remember that this reward
+function is calculated given the context observed and the action chosen.</p>
+<p>So, this is what I came about:</p>
+<ul>
+<li>Context: 1 binary feature</li>
+<li>Number of actions: 2</li>
+<li>Reward function pseudocode:</li>
+</ul>
+<pre><code>if context == 0
+    action 0 gives a reward of 1, other actions give 0 
+    rewards
+else
+    action 1 gives a reward of 1, other actions give 0 
+    rewards
+</code></pre><p>In this case, the best policy is to choose the $0^{th}$ action if the context is 0
+and choose the $1^{st}$ action otherwise, easy.</p>
+<h2 id="how-to-complicate">How to complicate</h2>
+<p>Now, let&rsquo;s try to incrementally add complexity to this problem.</p>
+<h3 id="stochastic-rewards">Stochastic rewards</h3>
+<p>Stochasticity always makes things harder and since this is what we are looking
+for, let&rsquo;s add it to our environment.</p>
+<ul>
+<li>Context: 1 binary feature</li>
+<li>Number of actions: 2</li>
+<li>Reward function pseudocode:</li>
+</ul>
+<pre><code>if context == 0
+    action 0 returns a reward of 1 with 50% chance, other 
+    actions give 0 rewards
+else
+    action 1 returns a reward of 1 with 50% chance, other 
+    actions give 0 rewards
+</code></pre><p>Here, the best policy it&rsquo;s still the same from the previous environment, but,
+intuitively, it should be harder for an algorithm to discover it.</p>
+<h3 id="continuous-context">Continuous context</h3>
+<p>Instead of the context being made of only 1 binary feature, it makes sense to use
+continuous ones, in case of the age of someone, for example, is being represented
+as a feature. So, let&rsquo;s change
+the context possibilities to infinity!</p>
+<ul>
+<li>Context: 1 continuous feature on the interval [0, 1]</li>
+<li>Number of actions: 2</li>
+<li>Reward function pseudocode:</li>
+</ul>
+<pre><code>if context &gt; 0.5
+    action 0 gives a reward of 1 with 50% chance, other 
+    actions give 0 rewards
+else
+    action 1 gives a reward of 1 with 50% chance, other 
+    actions give 0 rewards
+</code></pre><p>Note that we have to change the first <code>if</code> case of our reward function to
+deal with the continuous feature, instead of testing equality, we test if the
+context is greater than a threshold, in this case, 0.5.</p>
+<h3 id="other-ways">Other ways</h3>
+<p>There are of course other ways to increase the complexity of the problem,
+I will list some below.</p>
+<h3 id="datasets">Datasets</h3>
+<p>While it is good to manually tweak a contextual bandit environment for research
+or some experiments,
+this is not a straight forward task and requires dedicated human thought. A
+good alternative is to test contextual
+bandit algorithms on supervised-learning datasets. This can be done
+by representing the context and action by each (<em>X, y</em>) feature vector pair
+of the dataset, both regression
+and classification datasets can be used. With this approach, the environment can randomly sample
+one instance of the dataset, and the reward is based on the $y^k$ raw value in case
+the of regression. With classification datasets, we can use accuracy as the reward.</p>
+<h2 id="some-possibilities-for-benchmarks">Some possibilities for benchmarks</h2>
+<p>Here, I try to imagine more benchmarks for this problem, trying to add complexity
+and deal with corner cases.</p>
+<ul>
+<li>Standard multi-armed bandits scenario: the context doesn&rsquo;t influence the
+reward function.</li>
+<li>Imbalanced Dataset: There is an action (or subsect of actions) that are the
+better most often.</li>
+<li>Type of reward function function instead of just <code>context &gt; 0.5</code>:
+<ul>
+<li>linear function</li>
+<li>non-linear function (neural network)</li>
+</ul>
+</li>
+<li>Many degrees of randomness: This can be made by artificially adding noise to
+the dataset.</li>
+<li>Vary the number of actions and the number of context features: It would be good
+to test algorithms on datasets that have a high and low number of actions, this can
+also be said about the dimensionality of the context.</li>
+<li>Vary the number of samples: If the context repeats more often, then it
+should be easier for the algorithm to learn.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>[1] Cortes, David. “Adapting Multi-Armed Bandits Policies to Contextual Bandits Scenarios.” ArXiv:1811.04383 [Cs, Stat], Nov. 2019. arXiv.org, <a href="http://arxiv.org/abs/1811.04383">http://arxiv.org/abs/1811.04383</a>.</li>
+<li>[2] Bietti, Alberto, et al. “A Contextual Bandit Bake-Off.” ArXiv:1802.04064 [Cs, Stat], Jan. 2020. arXiv.org, <a href="http://arxiv.org/abs/1802.04064">http://arxiv.org/abs/1802.04064</a>.</li>
+</ul>
+<p>Previous Article: <a href="https://renan-cunha.github.io/posts/contextual-bandits/"><strong><em>A Very Short Intro to Contextual Bandits</em></strong></a></p>
+
+
+				</div>
 				
 				<div class="post">
 
@@ -151,6 +276,9 @@ disease X (the disease is the same to all patients).
 </ul>
 <h2 id="references">References</h2>
 <p>Slivkins, Aleksandrs. “Introduction to Multi-Armed Bandits.” ArXiv:1904.07272 [Cs, Stat], Sept. 2019. arXiv.org, <a href="http://arxiv.org/abs/1904.07272">http://arxiv.org/abs/1904.07272</a>.</p>
+<h3 id="heading"></h3>
+<p>Next Article: <a href="https://renan-cunha.github.io/posts/benchmark/"><strong><em>Brainstorming Benchmarks for Contextual
+Bandits</em></strong></a></p>
 
 
 				</div>
@@ -185,6 +313,8 @@ Economics.</p>
 					</div>
 
 					<ul>
+<li><a href="https://renan-cunha.github.io/posts/benchmark">Brainstorming Benchmarks for Contextual Bandits</a>
+(Feb 25,2020)</li>
 <li><a href="https://renan-cunha.github.io/posts/contextual-bandits">A very short Intro to Contextual Bandits</a>
 (Feb 24,2020)</li>
 </ul>

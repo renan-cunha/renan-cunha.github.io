@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="generator" content="Hugo 0.65.3" />
 	
-	<title>Posts - </title>
+	<title>Brainstorming Benchmarks for Contextual Bandits - </title>
 
 	
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
@@ -21,7 +21,7 @@
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	
-	<link href="https://renan-cunha.github.io/posts/index.xml" rel="alternate" type="application/rss+xml" title="Renan Cunha" />
+	<link href="" rel="alternate" type="application/rss+xml" title="Renan Cunha" />
 <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -111,12 +111,11 @@
 			</div>
 			<div class="col-sm-7 col-sm-offset-4 col-md-6 col-md-offset-3 col-lg-5 col-lg-offset-3 content">
 
-				
 				<div class="post">
 
 					<div class="post-heading">
-						<h1><a href="https://renan-cunha.github.io/posts/benchmark/">Brainstorming Benchmarks for Contextual Bandits</a></h1>
-						<span>Feb 25, 2020</span>
+						<h1>Brainstorming Benchmarks for Contextual Bandits</h1>
+						<span class="post-date"><a href="https://renan-cunha.github.io/posts/benchmark/"># Feb 25, 2020</a></span>
 					</div>
 
 					<p>Since contextual bandits are relatively new, they haven&rsquo;t been studied and tested
@@ -233,59 +232,6 @@ should be easier for the algorithm to learn.</li>
 <li>[2] Bietti, Alberto, et al. “A Contextual Bandit Bake-Off.” ArXiv:1802.04064 [Cs, Stat], Jan. 2020. arXiv.org, <a href="http://arxiv.org/abs/1802.04064">http://arxiv.org/abs/1802.04064</a>.</li>
 </ul>
 <p>Previous Article: <a href="https://renan-cunha.github.io/posts/contextual-bandits/"><strong><em>A Very Short Intro to Contextual Bandits</em></strong></a></p>
-
-
-				</div>
-				
-				<div class="post">
-
-					<div class="post-heading">
-						<h1><a href="https://renan-cunha.github.io/posts/contextual-bandits/">A very short Intro to Contextual Bandits</a></h1>
-						<span>Feb 24, 2020</span>
-					</div>
-
-					<p>In the contextual bandits problem, we have an
-environment with <em>K</em> possible actions. The environment returns some context <em>x</em>, taken from a distribution <em>X</em>.
-The environment also has a function <em>f(x, k)</em>, that calculates the reward
-based on the context and the chosen action <em>k</em>.</p>
-<p>The goal then is to find the policy $\pi$ that maximizes the rewards obtained in the
-long-term. A policy is a function that maps contexts to actions.</p>
-<p>The diagram below illustrates the problem:</p>
-<p><img src="https://renan-cunha.github.io/intro.png" alt="contextual-bandits-diagram"></p>
-<p>Explaining the steps:</p>
-<ul>
-<li>The environment displays a context <em>x</em></li>
-<li>The agent chooses an action <em>k</em> based on the context observed</li>
-<li>The environment returns a reward based on the most recent context and action</li>
-</ul>
-<p>This process continues without a determined time-limit.</p>
-<p>Additional considerations can be taken into account, like statistical efficiency (if the
-algorithm learns fast considering the number of examples) and
-computational complexity.</p>
-<h2 id="example">Example</h2>
-<ul>
-<li>Agent: A doctor.</li>
-<li>Environment: Every day, a random patient comes into the hospital with a
-disease X (the disease is the same to all patients).
-<ul>
-<li>Context: Features of the patient like age, sex, etc.</li>
-<li>Actions: K-number of medicines that the doctor can prescribe.</li>
-<li>Reward: 1 if the patient was cured, 0 otherwise.</li>
-</ul>
-</li>
-</ul>
-<h2 id="references">References</h2>
-<p>Slivkins, Aleksandrs. “Introduction to Multi-Armed Bandits.” ArXiv:1904.07272 [Cs, Stat], Sept. 2019. arXiv.org, <a href="http://arxiv.org/abs/1904.07272">http://arxiv.org/abs/1904.07272</a>.</p>
-<h3 id="heading"></h3>
-<p>Next Article: <a href="https://renan-cunha.github.io/posts/benchmark/"><strong><em>Brainstorming Benchmarks for Contextual
-Bandits</em></strong></a></p>
-
-
-				</div>
-				
-
-				<div class="text-center">
-					
 
 
 				</div>

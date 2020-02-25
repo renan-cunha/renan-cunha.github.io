@@ -3,32 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://renan-cunha.github.io/posts/contextual-bandits/</loc>
-    <lastmod>2020-02-24T00:00:00+00:00</lastmod>
+    <loc>https://renan-cunha.github.io/categories/ai/</loc>
+    <lastmod>2020-02-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://renan-cunha.github.io/categories/ai/</loc>
-    <lastmod>2020-02-24T00:00:00+00:00</lastmod>
+    <loc>https://renan-cunha.github.io/posts/benchmark/</loc>
+    <lastmod>2020-02-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://renan-cunha.github.io/categories/</loc>
-    <lastmod>2020-02-24T00:00:00+00:00</lastmod>
+    <lastmod>2020-02-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://renan-cunha.github.io/categories/contextual-bandits/</loc>
-    <lastmod>2020-02-24T00:00:00+00:00</lastmod>
+    <lastmod>2020-02-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://renan-cunha.github.io/posts/</loc>
-    <lastmod>2020-02-24T00:00:00+00:00</lastmod>
+    <lastmod>2020-02-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://renan-cunha.github.io/categories/reinforcement-learning/</loc>
+    <lastmod>2020-02-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://renan-cunha.github.io/posts/contextual-bandits/</loc>
     <lastmod>2020-02-24T00:00:00+00:00</lastmod>
   </url>
   
