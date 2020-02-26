@@ -18,11 +18,11 @@
       
       <guid>https://renan-cunha.github.io/posts/benchmark/</guid>
       <description>Since contextual bandits are relatively new, they haven&amp;rsquo;t been studied and tested so heavily as standard multi-armed bandits algorithms [1]. This being the case, it&amp;rsquo;s useful to design benchmarks for contextual bandits so these algorithms can be reliably tested, compared and improved.
-Prerequisites  Contextual Bandits  Simplest benchmark As many people in the AI community advice, a toy example with low complexity provides better and faster debugging cycles, a good property of early-stage research and experimentation.</description>
+Prerequisites  A Very Short Intro to Contextual Bandits  Simplest benchmark Many people in the AI community recommend the use of toy problems, these low complexity examples provide better and faster debugging cycles, a good property of early-stage research and experimentation.</description>
     </item>
     
     <item>
-      <title>A very short Intro to Contextual Bandits</title>
+      <title>A Very Short Intro to Contextual Bandits</title>
       <link>https://renan-cunha.github.io/posts/contextual-bandits/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
@@ -47,7 +47,18 @@ Links:  Google Scholar Github CV E-mail: renancunhafonseca@gmail.com  </descript
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://renan-cunha.github.io/archive/</guid>
-      <description> Brainstorming Benchmarks for Contextual Bandits (Feb 25,2020) A very short Intro to Contextual Bandits (Feb 24,2020)  </description>
+      <description> Solving Contextual Bandits with Greediness (Feb 26,2020) Brainstorming Benchmarks for Contextual Bandits (Feb 25,2020) A Very Short Intro to Contextual Bandits (Feb 24,2020)  </description>
+    </item>
+    
+    <item>
+      <title>Solving Contextual Bandits with Greediness</title>
+      <link>https://renan-cunha.github.io/posts/greedy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://renan-cunha.github.io/posts/greedy/</guid>
+      <description>In this post, I will explain and implement the simplest algorithm that solves the contextual bandits problem. However its simplicity, this algorithm performs considerably well [1].
+Prerequisites  A Very Short Intro to Contextual Bandits Standard Multi-Armed Bandit Epsilon-Greedy Algorithm [2]  Pseudocode This pseudocode is from [3].
+Input We can that the algorithm receives thre arguments, a probability p, a decay rate d and the oracles $\hat{f}_{1: k}$. Let&amp;rsquo;s explain each one of them.</description>
     </item>
     
   </channel>

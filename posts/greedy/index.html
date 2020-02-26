@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="generator" content="Hugo 0.65.3" />
 	
-	<title>A Very Short Intro to Contextual Bandits - </title>
+	<title>Solving Contextual Bandits with Greediness - </title>
 
 	
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
@@ -114,45 +114,53 @@
 				<div class="post">
 
 					<div class="post-heading">
-						<h1>A Very Short Intro to Contextual Bandits</h1>
-						<span class="post-date"><a href="https://renan-cunha.github.io/posts/contextual-bandits/"># Feb 24, 2020</a></span>
+						<h1>Solving Contextual Bandits with Greediness</h1>
+						<span class="post-date"><a href="https://renan-cunha.github.io/posts/greedy/"># Jan 1, 0001</a></span>
 					</div>
 
-					<p>In the contextual bandits problem, we have an
-environment with <em>K</em> possible actions. The environment returns some context <em>x</em>, taken from a distribution <em>X</em>.
-The environment also has a function <em>f(x, k)</em>, that calculates the reward
-based on the context and the chosen action <em>k</em>.</p>
-<p>The goal then is to find the policy $\pi$ that maximizes the rewards obtained in the
-long-term. A policy is a function that maps contexts to actions.</p>
-<p>The diagram below illustrates the problem:</p>
-<p><img src="https://renan-cunha.github.io/intro.png" alt="contextual-bandits-diagram"></p>
-<p>Explaining the steps:</p>
+					<p>In this post, I will explain and implement the simplest algorithm that solves
+the contextual bandits problem. However its simplicity, this algorithm performs
+considerably well [1].</p>
+<h2 id="prerequisites">Prerequisites</h2>
 <ul>
-<li>The environment displays a context <em>x</em></li>
-<li>The agent chooses an action <em>k</em> based on the context observed</li>
-<li>The environment returns a reward based on the most recent context and action</li>
+<li><a href="https://renan-cunha.github.io/posts/contextual-bandits/"><strong><em>A Very Short Intro to Contextual Bandits</em></strong></a></li>
+<li>Standard Multi-Armed Bandit Epsilon-Greedy Algorithm [2]</li>
 </ul>
-<p>This process continues without a determined time-limit.</p>
-<p>Additional considerations can be taken into account, like statistical efficiency (if the
-algorithm learns fast considering the number of examples) and
-computational complexity.</p>
-<h2 id="example">Example</h2>
+<h2 id="pseudocode">Pseudocode</h2>
+<p><img src="https://renan-cunha.github.io/img/epsilon-greedy-pseudocode.png" alt="epsilon-greedy-pseudocode"></p>
+<p>This pseudocode is from [3].</p>
+<h3 id="input">Input</h3>
+<p>We can that the algorithm receives thre arguments, a probability <em>p</em>, a decay
+rate <em>d</em> and the oracles $\hat{f}_{1: k}$. Let&rsquo;s explain each one of them.</p>
 <ul>
-<li>Agent: A doctor.</li>
-<li>Environment: Every day, a random patient comes into the hospital with a
-disease X (the disease is the same to all patients).
-<ul>
-<li>Context: Features of the patient like age, sex, etc.</li>
-<li>Actions: K-number of medicines that the doctor can prescribe.</li>
-<li>Reward: 1 if the patient was cured, 0 otherwise.</li>
+<li><em>p</em>: Dictates what will the probability of a random action in each round.</li>
+<li><em>d</em>: This variable control how fast <em>p</em> decreases during training.</li>
+<li>$\hat{f}_{1: k}$: The oracles are classifiers or regressors. They learn the
+rewards that each action will return, given the context <em>x</em>.</li>
 </ul>
-</li>
-</ul>
+<h3 id="line-by-line-analysis">Line-by-Line Analysis</h3>
+<p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_1.png" alt="epsilon-greedy-line-1"></p>
+<p>This is the standard loop of contextual bandits, where our algorithm receives
+a context <em>x</em> in each round.</p>
+<p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_2.png" alt="epsilon-greedy-line-2"></p>
+<p>In this block, the algorithm chooses a random action with probability <em>p</em>.
+Otherwise, it chooses the action that gives the maximum reward according to the
+oracles.</p>
+<p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_6.png" alt="epsilon-greedy-line-6"></p>
+<p>The probability rate is decreased according to <em>d</em>.</p>
+<p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_7.png" alt="epsilon-greedy-line-7"></p>
+<p>The algorithm receives a reward $r_a^t$ and stores it together with the context
+observed $x^t$. Note that the data stored is exclusive to the performed
+action/arm <em>a</em>.</p>
+<h2 id="code">Code</h2>
+<p>The language used in this implementation is Python and the full algorithm
+is available <a href="https://github.com/renan-cunha/Bandits/blob/master/src/contextual_bandits/epsilon_greedy.py"><strong><em>here</em></strong></a>.</p>
 <h2 id="references">References</h2>
-<p>Slivkins, Aleksandrs. “Introduction to Multi-Armed Bandits.” ArXiv:1904.07272 [Cs, Stat], Sept. 2019. arXiv.org, <a href="http://arxiv.org/abs/1904.07272">http://arxiv.org/abs/1904.07272</a>.</p>
-<h3 id="heading"></h3>
-<p>Next Article: <a href="https://renan-cunha.github.io/posts/benchmark/"><strong><em>Brainstorming Benchmarks for Contextual
-Bandits</em></strong></a></p>
+<ul>
+<li>[1] Cortes, David. “Adapting Multi-Armed Bandits Policies to Contextual Bandits Scenarios.” ArXiv:1811.04383 [Cs, Stat], Nov. 2019. arXiv.org, <a href="http://arxiv.org/abs/1811.04383">http://arxiv.org/abs/1811.04383</a>.</li>
+<li>[2] Chapter 2 of Richard S. Sutton and Andrew G. Barto. 2018. Reinforcement Learning: An Introduction. A Bradford Book, Cambridge, MA, USA. <a href="http://incompleteideas.net/book/the-book.html">http://incompleteideas.net/book/the-book.html</a></li>
+</ul>
+<p>Previous Article: <a href="https://renan-cunha.github.io/posts/benchmark/"><strong><em>Brainstorming Benchmarks for Contextual Bandits</em></strong></a></p>
 
 
 				</div>
