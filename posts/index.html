@@ -89,13 +89,13 @@
 				
 				<li><a href="https://renan-cunha.github.io/categories/ai/">AI</a></li>
 				
-				<li><a href="https://renan-cunha.github.io/posts/benchmark/">Brainstorming Benchmarks for Contextual Bandits</a></li>
-				
 				<li><a href="https://renan-cunha.github.io/categories/">Categories</a></li>
 				
 				<li><a href="https://renan-cunha.github.io/categories/contextual-bandits/">Contextual Bandits</a></li>
 				
 				<li><a href="https://renan-cunha.github.io/posts/">Posts</a></li>
+				
+				<li><a href="https://renan-cunha.github.io/categories/reinforcement-learning/">Reinforcement Learning</a></li>
 				
 			</ul>
 		</div>
@@ -111,6 +111,229 @@
 			</div>
 			<div class="col-sm-7 col-sm-offset-4 col-md-6 col-md-offset-3 col-lg-5 col-lg-offset-3 content">
 
+				
+				<div class="post">
+
+					<div class="post-heading">
+						<h1><a href="https://renan-cunha.github.io/posts/greedy/">Solving Contextual Bandits with Greediness</a></h1>
+						<span>Mar 2, 2020</span>
+					</div>
+
+					<p>In this post, I will explain and implement the epsilon-greedy algorithm, a simple algorithm that solves
+the contextual bandits problem. Despite its
+simplicity, this algorithm performs
+considerably well [1].</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><a href="https://renan-cunha.github.io/posts/contextual-bandits/"><strong><em>A Very Short Intro to Contextual Bandits</em></strong></a></li>
+<li>Python</li>
+<li><a href="https://numpy.org/devdocs/user/quickstart.html"><strong><em>Numpy</em></strong></a></li>
+<li>(Optional) Standard Multi-Armed Bandit Epsilon-Greedy Algorithm [2]</li>
+<li><a href="https://www.youtube.com/watch?v=-la3q9d7AKQ&amp;list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN&amp;index=33&amp;t=0s"><strong><em>Logistic Regression</em></strong></a> (You need
+to know what it is, not necessarily how it works)</li>
+</ul>
+<p>* Note: In this article, I use the words <em>arm</em> and <em>action</em>, and the words
+<em>step</em> and <em>round</em>, interchangeably.</p>
+<h2 id="intro">Intro</h2>
+<p>The intuition of the algorithm is to choose random actions sometimes. In the
+rest of the time, it chooses the action that it thinks is the best one, this
+simple balance between exploration (random actions) and exploitation (greediness)
+yields good results.</p>
+<h2 id="pseudocode">Pseudocode</h2>
+<p><img src="https://renan-cunha.github.io/img/epsilon-greedy-pseudocode.png" alt="epsilon-greedy-pseudocode"></p>
+<p>This pseudocode is from [3].</p>
+<h3 id="input">Input</h3>
+<p>We can see that the algorithm receives three arguments, a probability <em>p</em>, a decay
+rate <em>d</em> and the oracles $\hat{f}_{1: k}$. Let&rsquo;s explain each one of them.</p>
+<ul>
+<li><em>p</em>: Dictates what will be the probability of a random action in each round.</li>
+<li><em>d</em>: This variable control how fast <em>p</em> decreases during training.</li>
+<li>$\hat{f}_{1: k}$: Oracles that are classifiers or regressors. They learn the
+rewards that each action will return, given the context <em>x</em>.</li>
+</ul>
+<h3 id="line-by-line-analysis">Line-by-Line Analysis</h3>
+<p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_1.png" alt="epsilon-greedy-line-1"></p>
+<p>This is the standard loop of contextual bandits, in which the algorithm
+receives a context <em>x</em> in each round.</p>
+<p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_2.png" alt="epsilon-greedy-line-2"></p>
+<p>In this block, the algorithm chooses a random action with probability <em>p</em>.
+Otherwise, it chooses the action that gives the maximum reward according to the
+oracles.</p>
+<p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_6.png" alt="epsilon-greedy-line-6"></p>
+<p>The probability rate is decreased according to <em>d</em>.</p>
+<p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_7.png" alt="epsilon-greedy-line-7"></p>
+<p>The algorithm receives a reward $r_a^t$ and stores it together with the context
+observed $x^t$. Note that the data stored is exclusive to the performed
+action/arm <em>a</em>.</p>
+<p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_8.png" alt="epsilon-greedy-line-8"></p>
+<p>Then, the oracles learn the reward of each (context, action) pair given the
+data history. This training does not need to happen in every round, it is possible, for
+example, to train the oracles every 50 rounds.</p>
+<h2 id="code">Code</h2>
+<p>The programming language used in this implementation is Python and the full
+implementation
+is available <a href="https://colab.research.google.com/drive/1OemCb50Suc6oklrmmsgORBIqHBIaPD8V"><strong><em>here</em></strong></a>. For simplicity, the decay rate <em>d</em> will be
+discarded and it will be assumed that the probability of a random action will
+remain constant. Only binary rewards will be used. For the oracles, logistic regressors of the
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html"><strong><em>Sklearn library</em></strong></a> have been chosen.</p>
+<h3 id="contextual-environment">Contextual Environment</h3>
+<p>I made an interface of the contextual bandits environment so that I can easily
+request contexts and get rewards by acting on the environment.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ContextualEnv</span>(ABC):
+    
+    <span style="color:#a6e22e">@abstractmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_context</span>(self) <span style="color:#f92672">-&gt;</span> np<span style="color:#f92672">.</span>ndarray:
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#a6e22e">@abstractmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">act</span>(self, action: int) <span style="color:#f92672">-&gt;</span> float:
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#a6e22e">@abstractmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_num_arms</span>(self) <span style="color:#f92672">-&gt;</span> int:
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#a6e22e">@abstractmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_context_dim</span>(self) <span style="color:#f92672">-&gt;</span> int:
+        <span style="color:#66d9ef">pass</span>
+</code></pre></div><h3 id="epsilon-greedy-constructor">Epsilon Greedy Constructor</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EpsilonGreedy</span>:
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, c_env: ContextualEnv, 
+                 epsilon: float, num_steps: int,
+                 training_freq: int):
+        self<span style="color:#f92672">.</span>num_arms <span style="color:#f92672">=</span> c_env<span style="color:#f92672">.</span>get_num_arms()
+        self<span style="color:#f92672">.</span>num_steps <span style="color:#f92672">=</span> num_steps
+        self<span style="color:#f92672">.</span>epsilon <span style="color:#f92672">=</span> epsilon
+        self<span style="color:#f92672">.</span>training_freq <span style="color:#f92672">=</span> training_freq
+        self<span style="color:#f92672">.</span>classifiers <span style="color:#f92672">=</span> [LogisticRegression() <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> 
+                            range(self<span style="color:#f92672">.</span>num_arms)]
+        context_dim <span style="color:#f92672">=</span> c_env<span style="color:#f92672">.</span>get_context_dim()
+        self<span style="color:#f92672">.</span>context_data <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((num_steps,
+                                      context_dim))
+        self<span style="color:#f92672">.</span>rewards_data <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>full((num_steps, 
+                                     self<span style="color:#f92672">.</span>num_arms), <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, 
+                                    dtype<span style="color:#f92672">=</span>float)
+        self<span style="color:#f92672">.</span>c_env <span style="color:#f92672">=</span> c_env
+</code></pre></div><p>Here, epsilon is the probability of a random action <em>p</em> of the pseudocode.
+This class also receives a contextual environment object, the number of
+steps/rounds, and a parameter that dictates the training frequency of
+the oracles.</p>
+<p>One logistic regressor oracle is initialized for
+each arm/action of the environment. The context and reward history are also
+initialized. Since binary rewards are being used, the reward history is filled with
+-1, so it is possible to differentiate what arm received a reward in each round
+(a value of -1 says that the respective arm was not used in a given round).</p>
+<h3 id="save-stepround">Save Step/Round</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">save_step</span>(self, context: np<span style="color:#f92672">.</span>ndarray, action: int,
+              reward: float, step: int) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+    self<span style="color:#f92672">.</span>context_data[step] <span style="color:#f92672">=</span> context
+    self<span style="color:#f92672">.</span>rewards_data[step, action] <span style="color:#f92672">=</span> reward
+</code></pre></div><p>This method saves the context and reward received in each round/step. Note
+that the reward is saved on the history of the action/arm used.</p>
+<h3 id="action-policy">Action Policy</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">action_policy</span>(self, context: np<span style="color:#f92672">.</span>ndarray) <span style="color:#f92672">-&gt;</span> int:
+    coin <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)
+    <span style="color:#66d9ef">if</span> coin <span style="color:#f92672">&gt;</span> self<span style="color:#f92672">.</span>epsilon:
+        action <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>greedy_action(context)
+    <span style="color:#66d9ef">else</span>:
+        action <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, self<span style="color:#f92672">.</span>num_arms<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+    <span style="color:#66d9ef">return</span> action
+</code></pre></div><p>This method determines which strategy will be chosen, exploration or exploitation.
+The random action is chosen with a probability equal to epsilon, the greedy
+action is chosen otherwise.</p>
+<h3 id="greedy-action">Greedy Action</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">greedy_action</span>(self, context: np<span style="color:#f92672">.</span>ndarray) <span style="color:#f92672">-&gt;</span> int:
+    rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(len(self<span style="color:#f92672">.</span>classifiers))
+    <span style="color:#66d9ef">for</span> index, classifier <span style="color:#f92672">in</span> enumerate(self<span style="color:#f92672">.</span>classifiers):
+        <span style="color:#66d9ef">try</span>:
+            context <span style="color:#f92672">=</span> context<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+            action_score <span style="color:#f92672">=</span> classifier<span style="color:#f92672">.</span>predict(context)
+        <span style="color:#66d9ef">except</span> NotFittedError <span style="color:#66d9ef">as</span> e:
+            a <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.0</span><span style="color:#f92672">/</span>self<span style="color:#f92672">.</span>num_arms
+            action_score <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>beta(a, <span style="color:#ae81ff">4</span>)
+        rewards[index] <span style="color:#f92672">=</span> action_score
+
+     max_rewards <span style="color:#f92672">=</span> max(rewards)
+     best_actions <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argwhere(rewards <span style="color:#f92672">==</span> max_rewards)
+     best_actions <span style="color:#f92672">=</span> best_actions<span style="color:#f92672">.</span>flatten()
+     <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>choice(best_actions)
+</code></pre></div><p>On the greedy action method, each classifier is evaluated based on the context.
+If the classifier has not yet been trained, the score is estimated by running a beta
+distribution. This trick is done on [3]. After all of this, the action
+with the maximum estimated reward is chosen.</p>
+<h3 id="fit">Fit</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fit</span>(self, step: int) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+    step <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+    contexts_so_far <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>context_data[:step]
+    rewards_so_far <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>rewards_data[:step]
+    <span style="color:#66d9ef">for</span> arm_index <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>num_arms):
+        self<span style="color:#f92672">.</span>fit_classifier(contexts_so_far,
+                            rewards_so_far, arm_index)
+</code></pre></div><p>In this method, each classifier is trained, only the contexts and rewards
+seen so far are used.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fit_classifier</span>(self, contexts: np<span style="color:#f92672">.</span>ndarray,
+                   rewards: np<span style="color:#f92672">.</span>ndarray,
+                   arm: int) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+    arm_rewards <span style="color:#f92672">=</span> rewards[:, arm]
+    <span style="color:#75715e"># get the index of the rewards that the arm saw</span>
+    index <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argwhere(arm_rewards <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+    index <span style="color:#f92672">=</span> index<span style="color:#f92672">.</span>flatten()
+    arm_rewards <span style="color:#f92672">=</span> arm_rewards[index]
+    <span style="color:#75715e"># test if the arm saw at least one example of </span>
+    <span style="color:#75715e"># each class</span>
+    <span style="color:#66d9ef">if</span> len(np<span style="color:#f92672">.</span>unique(arm_rewards)) <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>:
+        arm_contexts <span style="color:#f92672">=</span> contexts[index]
+        self<span style="color:#f92672">.</span>classifiers[arm]<span style="color:#f92672">.</span>fit(arm_contexts, 
+                                  arm_rewards)
+</code></pre></div><p>Here, only the rewards that the each arm saw are used (that is why the
+reward history was initialized with -1, note the <code>argwhere</code>). It is verified if the arm saw at least one example
+of each reward (values of 0 and 1), so it can be trained.</p>
+<h3 id="simulation">Simulation</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">simulate</span>(self) <span style="color:#f92672">-&gt;</span> np<span style="color:#f92672">.</span>ndarray:
+    <span style="color:#e6db74">&#34;&#34;&#34;Returns rewards per step&#34;&#34;&#34;</span>
+
+    rewards_history <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(self<span style="color:#f92672">.</span>num_steps)
+    <span style="color:#66d9ef">for</span> step <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>num_steps):
+        context <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>c_env<span style="color:#f92672">.</span>get_context()
+        action <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>action_policy(context)
+        reward <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>c_env<span style="color:#f92672">.</span>act(action)
+        rewards_history[step] <span style="color:#f92672">=</span> reward
+        self<span style="color:#f92672">.</span>save_step(context, action, reward, step)
+        <span style="color:#66d9ef">if</span> step <span style="color:#f92672">%</span> self<span style="color:#f92672">.</span>training_freq <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+            self<span style="color:#f92672">.</span>fit(step)
+        
+    <span style="color:#66d9ef">return</span> rewards_history
+</code></pre></div><p>The <code>simulate</code> method does the training itself. A context is observed, an action
+is estimated based on the context, the (context, reward) is stored on the
+respective arm history, and every <code>training_freq</code> steps, the oracles are trained.</p>
+<h2 id="evaluation">Evaluation</h2>
+<p>Let&rsquo;s evaluate the algorithm on three environments, taken from
+<a href="https://renan-cunha.github.io/posts/benchmark/"><strong><em>here</em></strong></a>. I will give a brief
+description of each one:</p>
+<ol>
+<li>Binary context and deterministic rewards (easiest).</li>
+<li>Binary context and stochastic rewards.</li>
+<li>Continuous context and stochastic rewards.</li>
+</ol>
+<p>And here are the results, using epsilon equal to  0.2, training the oracles every
+50 rounds and averaging the results of 100 runs. This plot considers the mean
+reward of all history until each round.</p>
+<p><img src="https://renan-cunha.github.io/img/epsilon_greedy_results.png" alt="epsilon-greedy-results"></p>
+<p>We can see that the algorithm learns the deterministic binary environment really fast.
+The performance on the stochastic binary and stochastic continuous environments
+are about the same, but the algorithm has a little more trouble to learn the
+continuous environment.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[1] Bietti, Alberto, et al. “A Contextual Bandit Bake-Off.” ArXiv:1802.04064 [Cs, Stat], Jan. 2020. arXiv.org, <a href="http://arxiv.org/abs/1802.04064">http://arxiv.org/abs/1802.04064</a>.</li>
+<li>[2] Chapter 2 of Richard S. Sutton and Andrew G. Barto. 2018. Reinforcement Learning: An Introduction. A Bradford Book, Cambridge, MA, USA. <a href="http://incompleteideas.net/book/the-book.html">http://incompleteideas.net/book/the-book.html</a></li>
+<li>[3] Cortes, David. “Adapting Multi-Armed Bandits Policies to Contextual Bandits Scenarios.” ArXiv:1811.04383 [Cs, Stat], Nov. 2019. arXiv.org, <a href="http://arxiv.org/abs/1811.04383">http://arxiv.org/abs/1811.04383</a>.</li>
+</ul>
+<p>Previous Article: <a href="https://renan-cunha.github.io/posts/benchmark/"><strong><em>Brainstorming Benchmarks for Contextual Bandits</em></strong></a></p>
+
+
+				</div>
 				
 				<div class="post">
 
@@ -138,7 +361,7 @@ a good property of early-stage research and experimentation. So now, let&rsquo;s
 problem. First, let&rsquo;s
 use binary everywhere.
 Second, let&rsquo;s make the environment deterministic (an action <em>k</em> with context <em>x</em>
-always returns the same reward <em>r</em>). Third and finally, let&rsquo;s make
+always returns the same reward <em>r</em>). Third and last, let&rsquo;s make
 the reward function <em>f(x, k</em>) as simple as possible. Remember that this reward
 function is calculated given the context observed and the action chosen.</p>
 <p>So, this is what I came about:</p>
@@ -156,7 +379,7 @@ else
 </code></pre><p>In this case, the best policy is to choose the $0^{th}$ action if the context is 0
 and choose the $1^{st}$ action otherwise, easy.</p>
 <h2 id="how-to-complicate">How to complicate</h2>
-<p>Now, let&rsquo;s try to incrementally add complexity to this problem.</p>
+<p>Now, let&rsquo;s gradually try to add complexity to this problem.</p>
 <h3 id="stochastic-rewards">Stochastic rewards</h3>
 <p>Stochasticity always makes things harder and since this is what we are looking
 for, let&rsquo;s add it to our environment.</p>
@@ -166,13 +389,15 @@ for, let&rsquo;s add it to our environment.</p>
 <li>Reward function pseudocode:</li>
 </ul>
 <pre><code>if context == 0
-    action 0 returns a reward of 1 with 50% chance, other 
+    action 0 returns a reward of 2 with 50% chance, other 
     actions give 0 rewards
 else
-    action 1 returns a reward of 1 with 50% chance, other 
+    action 1 returns a reward of 2 with 50% chance, other 
     actions give 0 rewards
-</code></pre><p>Here, the best policy it&rsquo;s still the same from the previous environment, but,
-intuitively, it should be harder for an algorithm to discover it.</p>
+</code></pre><p>Here, the best policy is still the same as in the previous environment, but
+now, it should be harder for an algorithm to discover it. In this
+example, the reward is 2 because of the stochasticity, so the expected reward
+of each context can still be 1.</p>
 <h3 id="continuous-context">Continuous context</h3>
 <p>Instead of the context being made of only 1 binary feature, it makes sense to use
 continuous ones, in case of the age of someone, for example, is being represented
@@ -184,10 +409,10 @@ the context possibilities to infinity!</p>
 <li>Reward function pseudocode:</li>
 </ul>
 <pre><code>if context &gt; 0.5
-    action 0 gives a reward of 1 with 50% chance, other 
+    action 0 gives a reward of 2 with 50% chance, other 
     actions give 0 rewards
 else
-    action 1 gives a reward of 1 with 50% chance, other 
+    action 1 gives a reward of 2 with 50% chance, other 
     actions give 0 rewards
 </code></pre><p>Note that we have to change the first <code>if</code> case of our reward function to
 deal with the continuous feature, instead of testing equality, we test if the
@@ -204,8 +429,9 @@ bandit algorithms on supervised-learning datasets. This can be done
 by representing the context and action by each (<em>X, y</em>) feature vector pair
 of the dataset, both regression
 and classification datasets can be used. With this approach, the environment can randomly sample
-one instance of the dataset, and the reward is based on the $y^k$ raw value in case
-the of regression. With classification datasets, we can use accuracy as the reward.</p>
+one instance of the dataset, and the reward is based on the $y^k$ raw value in
+the case
+of regression. With classification datasets, we can use accuracy as the reward.</p>
 <h2 id="some-possibilities-for-benchmarks">Some possibilities for benchmarks</h2>
 <p>Here, I try to imagine more benchmarks for this problem, trying to add complexity
 and deal with corner cases.</p>
@@ -213,7 +439,7 @@ and deal with corner cases.</p>
 <li>Standard multi-armed bandits scenario: the context doesn&rsquo;t influence the
 reward function.</li>
 <li>Imbalanced Dataset: There is an action (or subsect of actions) that are the
-better most often.</li>
+better more often.</li>
 <li>Type of reward function function instead of just <code>context &gt; 0.5</code>:
 <ul>
 <li>linear function</li>
@@ -281,60 +507,6 @@ disease X (the disease is the same to all patients).
 <h3 id="heading"></h3>
 <p>Next Article: <a href="https://renan-cunha.github.io/posts/benchmark/"><strong><em>Brainstorming Benchmarks for Contextual
 Bandits</em></strong></a></p>
-
-
-				</div>
-				
-				<div class="post">
-
-					<div class="post-heading">
-						<h1><a href="https://renan-cunha.github.io/posts/greedy/">Solving Contextual Bandits with Greediness</a></h1>
-						<span>Jan 1, 0001</span>
-					</div>
-
-					<p>In this post, I will explain and implement the simplest algorithm that solves
-the contextual bandits problem. However its simplicity, this algorithm performs
-considerably well [1].</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<ul>
-<li><a href="https://renan-cunha.github.io/posts/contextual-bandits/"><strong><em>A Very Short Intro to Contextual Bandits</em></strong></a></li>
-<li>Standard Multi-Armed Bandit Epsilon-Greedy Algorithm [2]</li>
-</ul>
-<h2 id="pseudocode">Pseudocode</h2>
-<p><img src="https://renan-cunha.github.io/img/epsilon-greedy-pseudocode.png" alt="epsilon-greedy-pseudocode"></p>
-<p>This pseudocode is from [3].</p>
-<h3 id="input">Input</h3>
-<p>We can that the algorithm receives thre arguments, a probability <em>p</em>, a decay
-rate <em>d</em> and the oracles $\hat{f}_{1: k}$. Let&rsquo;s explain each one of them.</p>
-<ul>
-<li><em>p</em>: Dictates what will the probability of a random action in each round.</li>
-<li><em>d</em>: This variable control how fast <em>p</em> decreases during training.</li>
-<li>$\hat{f}_{1: k}$: The oracles are classifiers or regressors. They learn the
-rewards that each action will return, given the context <em>x</em>.</li>
-</ul>
-<h3 id="line-by-line-analysis">Line-by-Line Analysis</h3>
-<p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_1.png" alt="epsilon-greedy-line-1"></p>
-<p>This is the standard loop of contextual bandits, where our algorithm receives
-a context <em>x</em> in each round.</p>
-<p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_2.png" alt="epsilon-greedy-line-2"></p>
-<p>In this block, the algorithm chooses a random action with probability <em>p</em>.
-Otherwise, it chooses the action that gives the maximum reward according to the
-oracles.</p>
-<p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_6.png" alt="epsilon-greedy-line-6"></p>
-<p>The probability rate is decreased according to <em>d</em>.</p>
-<p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_7.png" alt="epsilon-greedy-line-7"></p>
-<p>The algorithm receives a reward $r_a^t$ and stores it together with the context
-observed $x^t$. Note that the data stored is exclusive to the performed
-action/arm <em>a</em>.</p>
-<h2 id="code">Code</h2>
-<p>The language used in this implementation is Python and the full algorithm
-is available <a href="https://github.com/renan-cunha/Bandits/blob/master/src/contextual_bandits/epsilon_greedy.py"><strong><em>here</em></strong></a>.</p>
-<h2 id="references">References</h2>
-<ul>
-<li>[1] Cortes, David. “Adapting Multi-Armed Bandits Policies to Contextual Bandits Scenarios.” ArXiv:1811.04383 [Cs, Stat], Nov. 2019. arXiv.org, <a href="http://arxiv.org/abs/1811.04383">http://arxiv.org/abs/1811.04383</a>.</li>
-<li>[2] Chapter 2 of Richard S. Sutton and Andrew G. Barto. 2018. Reinforcement Learning: An Introduction. A Bradford Book, Cambridge, MA, USA. <a href="http://incompleteideas.net/book/the-book.html">http://incompleteideas.net/book/the-book.html</a></li>
-</ul>
-<p>Previous Article: <a href="https://renan-cunha.github.io/posts/benchmark/"><strong><em>Brainstorming Benchmarks for Contextual Bandits</em></strong></a></p>
 
 
 				</div>

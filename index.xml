@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Solving Contextual Bandits with Greediness</title>
+      <link>https://renan-cunha.github.io/posts/greedy/</link>
+      <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://renan-cunha.github.io/posts/greedy/</guid>
+      <description>In this post, I will explain and implement the epsilon-greedy algorithm, a simple algorithm that solves the contextual bandits problem. Despite its simplicity, this algorithm performs considerably well [1].
+Prerequisites  A Very Short Intro to Contextual Bandits Python Numpy (Optional) Standard Multi-Armed Bandit Epsilon-Greedy Algorithm [2] Logistic Regression (You need to know what it is, not necessarily how it works)  * Note: In this article, I use the words arm and action, and the words step and round, interchangeably.</description>
+    </item>
+    
+    <item>
       <title>Brainstorming Benchmarks for Contextual Bandits</title>
       <link>https://renan-cunha.github.io/posts/benchmark/</link>
       <pubDate>Tue, 25 Feb 2020 00:00:00 +0000</pubDate>
@@ -48,17 +58,6 @@ Links:  Google Scholar Github CV E-mail: renancunhafonseca@gmail.com  </descript
       
       <guid>https://renan-cunha.github.io/archive/</guid>
       <description> Solving Contextual Bandits with Greediness (Feb 26,2020) Brainstorming Benchmarks for Contextual Bandits (Feb 25,2020) A Very Short Intro to Contextual Bandits (Feb 24,2020)  </description>
-    </item>
-    
-    <item>
-      <title>Solving Contextual Bandits with Greediness</title>
-      <link>https://renan-cunha.github.io/posts/greedy/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://renan-cunha.github.io/posts/greedy/</guid>
-      <description>In this post, I will explain and implement the simplest algorithm that solves the contextual bandits problem. However its simplicity, this algorithm performs considerably well [1].
-Prerequisites  A Very Short Intro to Contextual Bandits Standard Multi-Armed Bandit Epsilon-Greedy Algorithm [2]  Pseudocode This pseudocode is from [3].
-Input We can that the algorithm receives thre arguments, a probability p, a decay rate d and the oracles $\hat{f}_{1: k}$. Let&amp;rsquo;s explain each one of them.</description>
     </item>
     
   </channel>

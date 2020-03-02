@@ -89,13 +89,13 @@
 				
 				<li><a href="https://renan-cunha.github.io/categories/ai/">AI</a></li>
 				
-				<li><a href="https://renan-cunha.github.io/posts/benchmark/">Brainstorming Benchmarks for Contextual Bandits</a></li>
-				
 				<li><a href="https://renan-cunha.github.io/categories/">Categories</a></li>
 				
 				<li><a href="https://renan-cunha.github.io/categories/contextual-bandits/">Contextual Bandits</a></li>
 				
 				<li><a href="https://renan-cunha.github.io/posts/">Posts</a></li>
+				
+				<li><a href="https://renan-cunha.github.io/categories/reinforcement-learning/">Reinforcement Learning</a></li>
 				
 			</ul>
 		</div>
@@ -137,7 +137,7 @@ a good property of early-stage research and experimentation. So now, let&rsquo;s
 problem. First, let&rsquo;s
 use binary everywhere.
 Second, let&rsquo;s make the environment deterministic (an action <em>k</em> with context <em>x</em>
-always returns the same reward <em>r</em>). Third and finally, let&rsquo;s make
+always returns the same reward <em>r</em>). Third and last, let&rsquo;s make
 the reward function <em>f(x, k</em>) as simple as possible. Remember that this reward
 function is calculated given the context observed and the action chosen.</p>
 <p>So, this is what I came about:</p>
@@ -155,7 +155,7 @@ else
 </code></pre><p>In this case, the best policy is to choose the $0^{th}$ action if the context is 0
 and choose the $1^{st}$ action otherwise, easy.</p>
 <h2 id="how-to-complicate">How to complicate</h2>
-<p>Now, let&rsquo;s try to incrementally add complexity to this problem.</p>
+<p>Now, let&rsquo;s gradually try to add complexity to this problem.</p>
 <h3 id="stochastic-rewards">Stochastic rewards</h3>
 <p>Stochasticity always makes things harder and since this is what we are looking
 for, let&rsquo;s add it to our environment.</p>
@@ -165,13 +165,15 @@ for, let&rsquo;s add it to our environment.</p>
 <li>Reward function pseudocode:</li>
 </ul>
 <pre><code>if context == 0
-    action 0 returns a reward of 1 with 50% chance, other 
+    action 0 returns a reward of 2 with 50% chance, other 
     actions give 0 rewards
 else
-    action 1 returns a reward of 1 with 50% chance, other 
+    action 1 returns a reward of 2 with 50% chance, other 
     actions give 0 rewards
-</code></pre><p>Here, the best policy it&rsquo;s still the same from the previous environment, but,
-intuitively, it should be harder for an algorithm to discover it.</p>
+</code></pre><p>Here, the best policy is still the same as in the previous environment, but
+now, it should be harder for an algorithm to discover it. In this
+example, the reward is 2 because of the stochasticity, so the expected reward
+of each context can still be 1.</p>
 <h3 id="continuous-context">Continuous context</h3>
 <p>Instead of the context being made of only 1 binary feature, it makes sense to use
 continuous ones, in case of the age of someone, for example, is being represented
@@ -183,10 +185,10 @@ the context possibilities to infinity!</p>
 <li>Reward function pseudocode:</li>
 </ul>
 <pre><code>if context &gt; 0.5
-    action 0 gives a reward of 1 with 50% chance, other 
+    action 0 gives a reward of 2 with 50% chance, other 
     actions give 0 rewards
 else
-    action 1 gives a reward of 1 with 50% chance, other 
+    action 1 gives a reward of 2 with 50% chance, other 
     actions give 0 rewards
 </code></pre><p>Note that we have to change the first <code>if</code> case of our reward function to
 deal with the continuous feature, instead of testing equality, we test if the
@@ -203,8 +205,9 @@ bandit algorithms on supervised-learning datasets. This can be done
 by representing the context and action by each (<em>X, y</em>) feature vector pair
 of the dataset, both regression
 and classification datasets can be used. With this approach, the environment can randomly sample
-one instance of the dataset, and the reward is based on the $y^k$ raw value in case
-the of regression. With classification datasets, we can use accuracy as the reward.</p>
+one instance of the dataset, and the reward is based on the $y^k$ raw value in
+the case
+of regression. With classification datasets, we can use accuracy as the reward.</p>
 <h2 id="some-possibilities-for-benchmarks">Some possibilities for benchmarks</h2>
 <p>Here, I try to imagine more benchmarks for this problem, trying to add complexity
 and deal with corner cases.</p>
@@ -212,7 +215,7 @@ and deal with corner cases.</p>
 <li>Standard multi-armed bandits scenario: the context doesn&rsquo;t influence the
 reward function.</li>
 <li>Imbalanced Dataset: There is an action (or subsect of actions) that are the
-better most often.</li>
+better more often.</li>
 <li>Type of reward function function instead of just <code>context &gt; 0.5</code>:
 <ul>
 <li>linear function</li>
