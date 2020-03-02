@@ -135,8 +135,8 @@ to know what it is, not necessarily how it works)</li>
 <p>* Note: In this article, I use the words <em>arm</em> and <em>action</em>, and the words
 <em>step</em> and <em>round</em>, interchangeably.</p>
 <h2 id="intro">Intro</h2>
-<p>The intuition of the algorithm is to choose random actions sometimes. In the
-rest of the time, it chooses the action that it thinks is the best one, this
+<p>The intuition of the algorithm is to choose random actions at sometimes. In the
+rest of the time, it chooses the action that it thinks is the best one. This
 simple balance between exploration (random actions) and exploitation (greediness)
 yields good results.</p>
 <h2 id="pseudocode">Pseudocode</h2>
@@ -147,7 +147,7 @@ yields good results.</p>
 rate <em>d</em> and the oracles $\hat{f}_{1: k}$. Let&rsquo;s explain each one of them.</p>
 <ul>
 <li><em>p</em>: Dictates what will be the probability of a random action in each round.</li>
-<li><em>d</em>: This variable control how fast <em>p</em> decreases during training.</li>
+<li><em>d</em>: This variable controls how fast <em>p</em> decreases during training.</li>
 <li>$\hat{f}_{1: k}$: Oracles that are classifiers or regressors. They learn the
 rewards that each action will return, given the context <em>x</em>.</li>
 </ul>
@@ -162,12 +162,12 @@ oracles.</p>
 <p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_6.png" alt="epsilon-greedy-line-6"></p>
 <p>The probability rate is decreased according to <em>d</em>.</p>
 <p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_7.png" alt="epsilon-greedy-line-7"></p>
-<p>The algorithm receives a reward $r_a^t$ and stores it together with the context
-observed $x^t$. Note that the data stored is exclusive to the performed
+<p>The algorithm receives a reward $r_a^t$ and stores it together with the
+observed context $x^t$. Note that the data stored is exclusive to the performed
 action/arm <em>a</em>.</p>
 <p><img src="https://renan-cunha.github.io/img/epsilon_greedy_line_8.png" alt="epsilon-greedy-line-8"></p>
 <p>Then, the oracles learn the reward of each (context, action) pair given the
-data history. This training does not need to happen in every round, it is possible, for
+data history. This training does not need to happen in every round. It is possible, for
 example, to train the oracles every 50 rounds.</p>
 <h2 id="code">Code</h2>
 <p>The programming language used in this implementation is Python and the full
@@ -260,7 +260,7 @@ action is chosen otherwise.</p>
      <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>choice(best_actions)
 </code></pre></div><p>On the greedy action method, each classifier is evaluated based on the context.
 If the classifier has not yet been trained, the score is estimated by running a beta
-distribution. This trick is done on [3]. After all of this, the action
+distribution. This trick is done on [3]. Afterwards, the action
 with the maximum estimated reward is chosen.</p>
 <h3 id="fit">Fit</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fit</span>(self, step: int) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
@@ -316,7 +316,7 @@ description of each one:</p>
 <li>Binary context and stochastic rewards.</li>
 <li>Continuous context and stochastic rewards.</li>
 </ol>
-<p>And here are the results, using epsilon equal to  0.2, training the oracles every
+<p>The results were obtained using epsilon equal to 0.2, training the oracles every
 50 rounds and averaging the results of 100 runs. This plot considers the mean
 reward of all history until each round.</p>
 <p><img src="https://renan-cunha.github.io/img/epsilon_greedy_results.png" alt="epsilon-greedy-results"></p>
