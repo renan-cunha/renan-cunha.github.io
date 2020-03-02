@@ -119,7 +119,7 @@
 						<span>Mar 2, 2020</span>
 					</div>
 
-					<p>In this post, I will explain and implement the epsilon-greedy algorithm, a simple algorithm that solves
+					<p>In this post, I will explain and implement Epsilon-Greedy, a simple algorithm that solves
 the contextual bandits problem. Despite its
 simplicity, this algorithm performs
 considerably well [1].</p>
@@ -363,7 +363,7 @@ use binary everywhere.
 Second, let&rsquo;s make the environment deterministic (an action <em>k</em> with context <em>x</em>
 always returns the same reward <em>r</em>). Third and last, let&rsquo;s make
 the reward function <em>f(x, k</em>) as simple as possible. Remember that this reward
-function is calculated given the context observed and the action chosen.</p>
+function is calculated given the observed context and the chosen action.</p>
 <p>So, this is what I came about:</p>
 <ul>
 <li>Context: 1 binary feature</li>
@@ -379,7 +379,7 @@ else
 </code></pre><p>In this case, the best policy is to choose the $0^{th}$ action if the context is 0
 and choose the $1^{st}$ action otherwise, easy.</p>
 <h2 id="how-to-complicate">How to complicate</h2>
-<p>Now, let&rsquo;s gradually try to add complexity to this problem.</p>
+<p>Now, let&rsquo;s try to gradually add complexity to this problem.</p>
 <h3 id="stochastic-rewards">Stochastic rewards</h3>
 <p>Stochasticity always makes things harder and since this is what we are looking
 for, let&rsquo;s add it to our environment.</p>
@@ -415,10 +415,10 @@ else
     action 1 gives a reward of 2 with 50% chance, other 
     actions give 0 rewards
 </code></pre><p>Note that we have to change the first <code>if</code> case of our reward function to
-deal with the continuous feature, instead of testing equality, we test if the
+deal with the continuous feature. Instead of testing equality, we test if the
 context is greater than a threshold, in this case, 0.5.</p>
 <h3 id="other-ways">Other ways</h3>
-<p>There are of course other ways to increase the complexity of the problem,
+<p>There are other ways to increase the complexity of the problem and
 I will list some below.</p>
 <h3 id="datasets">Datasets</h3>
 <p>While it is good to manually tweak a contextual bandit environment for research
@@ -438,8 +438,7 @@ and deal with corner cases.</p>
 <ul>
 <li>Standard multi-armed bandits scenario: the context doesn&rsquo;t influence the
 reward function.</li>
-<li>Imbalanced Dataset: There is an action (or subsect of actions) that are the
-better more often.</li>
+<li>Imbalanced Dataset: There is an action that is better more often.</li>
 <li>Type of reward function function instead of just <code>context &gt; 0.5</code>:
 <ul>
 <li>linear function</li>

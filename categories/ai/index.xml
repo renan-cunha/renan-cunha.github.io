@@ -17,7 +17,7 @@
       <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://renan-cunha.github.io/posts/greedy/</guid>
-      <description>In this post, I will explain and implement the epsilon-greedy algorithm, a simple algorithm that solves the contextual bandits problem. Despite its simplicity, this algorithm performs considerably well [1].
+      <description>In this post, I will explain and implement Epsilon-Greedy, a simple algorithm that solves the contextual bandits problem. Despite its simplicity, this algorithm performs considerably well [1].
 Prerequisites  A Very Short Intro to Contextual Bandits Python Numpy (Optional) Standard Multi-Armed Bandit Epsilon-Greedy Algorithm [2] Logistic Regression (You need to know what it is, not necessarily how it works)  * Note: In this article, I use the words arm and action, and the words step and round, interchangeably.</description>
     </item>
     
