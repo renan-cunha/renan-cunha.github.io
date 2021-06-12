@@ -6,11 +6,7 @@
     <description>Recent content on Renan Cunha</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Your Copyright</copyright>
-    <lastBuildDate>Mon, 02 Mar 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://renan-cunha.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 02 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://renan-cunha.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Solving Contextual Bandits with Greediness</title>
       <link>https://renan-cunha.github.io/posts/greedy/</link>
@@ -44,11 +40,11 @@ The goal then is to find the policy $\pi$ that maximizes the rewards obtained in
     <item>
       <title>About Me</title>
       <link>https://renan-cunha.github.io/about/</link>
-      <pubDate>Sun, 23 Feb 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://renan-cunha.github.io/about/</guid>
-      <description>I am an undergraduate student of Computer Science at the Universidade Federal do Pará. My main interests are in Artificial Intelligence and Data Science. I am also interested in Philosophy and Economics.
-Links:  Google Scholar Github CV E-mail: renancunhafonseca@gmail.com  </description>
+      <description>Hi, I am Renan Cunha, a Computer Scientist from Pará, a state in northern Brazil. I made this blog to learn and write more, two things I love to do. Most of the stuff I write here is work-related, but sometimes I can end up on weird and unexpected topics.
+My main interests that intersect with my work (and between themselves) are AI and Data Science. My interest in AI started because I became fascinated by the intelligent behavior performed by machines, so I wanted to build software that had this kind of complexity.</description>
     </item>
     
     <item>
