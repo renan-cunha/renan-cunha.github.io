@@ -1,41 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Renan Cunha</title>
-    <link>https://renan-cunha.github.io/posts/</link>
-    <description>Recent content in Posts on Renan Cunha</description>
+    <title>Posts on Renan F. Cunha</title>
+    <link>https://renan-cunnha.github.com/posts/</link>
+    <description>Recent content in Posts on Renan F. Cunha</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Creative Commons Attribution 4.0 International Public License</copyright>
-    <lastBuildDate>Mon, 02 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://renan-cunha.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sun, 24 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://renan-cunnha.github.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Knowledge and Dicipline</title>
+      <link>https://renan-cunnha.github.com/posts/2024_03_knowledge_discipline/</link>
+      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://renan-cunnha.github.com/posts/2024_03_knowledge_discipline/</guid>
+      <description>Imagine you want to reach a goal, such as being able to do 40 push-ups when you currently can only do 5.&#xA;I believe there are mainly three things you need to reach your goal: natural capacity (absence of serious physical limitations, etc.), knowledge, and discipline. You cannot change the first factor, so let&amp;rsquo;s focus on the latter two.&#xA;Knowledge helps you figure out what you need to do. Imagine GPT-100 exists and is omniscient.</description>
+    </item>
     <item>
       <title>Solving Contextual Bandits with Greediness</title>
-      <link>https://renan-cunha.github.io/posts/greedy/</link>
+      <link>https://renan-cunnha.github.com/posts/greedy/</link>
       <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://renan-cunha.github.io/posts/greedy/</guid>
-      <description>In this post, I will explain and implement Epsilon-Greedy, a simple algorithm that solves the contextual bandits problem. Despite its simplicity, this algorithm performs considerably well [1].
-Prerequisites  A Very Short Intro to Contextual Bandits Python Numpy (Optional) Standard Multi-Armed Bandit Epsilon-Greedy Algorithm [2] Logistic Regression (You need to know what it is, not necessarily how it works)  * Note: In this article, I use the words arm and action, and the words step and round, interchangeably.</description>
+      <guid>https://renan-cunnha.github.com/posts/greedy/</guid>
+      <description>In this post, I will explain and implement Epsilon-Greedy, a simple algorithm that solves the contextual bandits problem. Despite its simplicity, this algorithm performs considerably well [1].&#xA;Prerequisites A Very Short Intro to Contextual Bandits Python Numpy (Optional) Standard Multi-Armed Bandit Epsilon-Greedy Algorithm [2] Logistic Regression (You need to know what it is, not necessarily how it works) * Note: In this article, I use the words arm and action, and the words step and round, interchangeably.</description>
     </item>
-    
     <item>
       <title>Brainstorming Benchmarks for Contextual Bandits</title>
-      <link>https://renan-cunha.github.io/posts/benchmark/</link>
+      <link>https://renan-cunnha.github.com/posts/benchmark/</link>
       <pubDate>Tue, 25 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://renan-cunha.github.io/posts/benchmark/</guid>
-      <description>Since contextual bandits are relatively new, they haven&amp;rsquo;t been studied and tested so heavily as standard multi-armed bandits algorithms [1]. This being the case, it&amp;rsquo;s useful to design benchmarks for contextual bandits so these algorithms can be reliably tested, compared and improved.
-Prerequisites  A Very Short Intro to Contextual Bandits  Simplest benchmark Many people in the AI community recommend the use of toy problems, these low complexity examples provide better and faster debugging cycles, a good property of early-stage research and experimentation.</description>
+      <guid>https://renan-cunnha.github.com/posts/benchmark/</guid>
+      <description>Since contextual bandits are relatively new, they haven&amp;rsquo;t been studied and tested so heavily as standard multi-armed bandits algorithms [1]. This being the case, it&amp;rsquo;s useful to design benchmarks for contextual bandits so these algorithms can be reliably tested, compared and improved.&#xA;Prerequisites A Very Short Intro to Contextual Bandits Simplest benchmark Many people in the AI community recommend the use of toy problems, these low complexity examples provide better and faster debugging cycles, a good property of early-stage research and experimentation.</description>
     </item>
-    
     <item>
       <title>A Very Short Intro to Contextual Bandits</title>
-      <link>https://renan-cunha.github.io/posts/contextual-bandits/</link>
+      <link>https://renan-cunnha.github.com/posts/contextual-bandits/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://renan-cunha.github.io/posts/contextual-bandits/</guid>
-      <description>In the contextual bandits problem, we have an environment with K possible actions. The environment returns some context x, taken from a distribution X. The environment also has a function f(x, k), that calculates the reward based on the context and the chosen action k.
-The goal then is to find the policy $\pi$ that maximizes the rewards obtained in the long-term. A policy is a function that maps contexts to actions.</description>
+      <guid>https://renan-cunnha.github.com/posts/contextual-bandits/</guid>
+      <description>In the contextual bandits problem, we have an environment with K possible actions. The environment returns some context x, taken from a distribution X. The environment also has a function f(x, k), that calculates the reward based on the context and the chosen action k.&#xA;The goal then is to find the policy $\pi$ that maximizes the rewards obtained in the long-term. A policy is a function that maps contexts to actions.</description>
     </item>
-    
   </channel>
 </rss>

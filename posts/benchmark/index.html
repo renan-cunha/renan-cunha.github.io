@@ -1,131 +1,70 @@
 <!DOCTYPE html>
-<html >
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <meta property="og:image" content="https://renan-cunha.github.io/">
-    
-	<meta name="generator" content="Hugo 0.83.1" />
-	
-	<title>Brainstorming Benchmarks for Contextual Bandits</title>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Since contextual bandits are relatively new, they haven&rsquo;t been studied and tested so heavily as standard multi-armed bandits algorithms [1]. This being the case, it&rsquo;s useful to design benchmarks for contextual bandits so these algorithms can be reliably tested, compared and improved.
+Prerequisites A Very Short Intro to Contextual Bandits Simplest benchmark Many people in the AI community recommend the use of toy problems, these low complexity examples provide better and faster debugging cycles, a good property of early-stage research and experimentation.">  
 
-	
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-	<link href="https://renan-cunha.github.io//css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://renan-cunha.github.io//css/strange-case.css" rel="stylesheet">
-	
+  <title>
+    
+      Brainstorming Benchmarks for Contextual Bandits
+    
+  </title>
 
-	
-	
-	<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-	
-    <link href="" rel="alternate" type="application/rss+xml" title="Renan Cunha" />
-<script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-  MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
-  }
-  });
-  MathJax.Hub.Queue(function() {
-    
-    
-    
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
 
-  MathJax.Hub.Config({
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
   
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-  });
+  
+  
+  <link rel="stylesheet" href="/css/main.c5af9bae99b4a3d315b9f39305ffff27e9c3383fbbfd8b5fcaf2237667021a333a982fb958d1813a720b0a660b14022337553ae1ca93ef2ee17c4ae628ac19cb.css" integrity="sha512-xa&#43;brpm0o9MVufOTBf//J&#43;nDOD&#43;7/YtfyvIjdmcCGjM6mC&#43;5WNGBOnILCmYLFAIjN1U64cqT7y7hfErmKKwZyw==" />
+   <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
 </script>
-
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+ 
 </head>
-<body class="scheme-lightbrown">
+<body a="dark">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
 
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-4 col-md-3 col-lg-3 sidebar">
+<article>
+    <p class="post-meta">
+        <time datetime="2020-02-25 00:00:00 &#43;0000 UTC">
+            2020-02-25
+        </time>
+    </p>
 
-			
-	<div class="sidebar-content">
+    <h1>Brainstorming Benchmarks for Contextual Bandits</h1>
 
-		<a href="https://renan-cunha.github.io/"><h1>Renan Cunha</h1></a>
-		<p>AI, Data Science, and anything else.</p>
+    
 
-		
-
-		<ul class="sidebar-menus">
-			
-				<li>&#187; <a href="https://renan-cunha.github.io/about/">About Me</a> </li>
-			
-				<li>&#187; <a href="https://renan-cunha.github.io/archive/">Archive</a> </li>
-			
-				<li>&#187; <a href="https://renan-cunha.github.io/posts">Blog</a> </li>
-			
-				<li>&#187; <a href="https://renan-cunha.github.io/categories">Categories</a> </li>
-			
-		</ul>
-
-		<div class="sidebar-recent hidden-xs">
-			<p>Recent Posts:</p>
-			<ul>
-				
-				<li><a href="https://renan-cunha.github.io/categories/ai/">AI</a></li>
-				
-				<li><a href="https://renan-cunha.github.io/categories/">Categories</a></li>
-				
-				<li><a href="https://renan-cunha.github.io/categories/contextual-bandits/">Contextual Bandits</a></li>
-				
-				<li><a href="https://renan-cunha.github.io/posts/">Posts</a></li>
-				
-				<li><a href="https://renan-cunha.github.io/categories/reinforcement-learning/">Reinforcement Learning</a></li>
-				
-			</ul>
-		</div>
-
-		
-
-		<p class="copyright">&copy; 2021. All rights reserved. </p>
-		<p class="attr">Powered by <a href="http://gohugo.io">Hugo</a> &amp; <a href="https://github.com/ExchangeRate-API/strange-case">Strange Case</a> (inspired by <a href="https://github.com/poole/hyde">Hyde</a>).</p>
-
-	</div>
-
-
-			</div>
-			<div class="col-sm-7 col-sm-offset-4 col-md-6 col-md-offset-3 col-lg-5 col-lg-offset-3 content">
-
-				<div class="post">
-
-					<div class="post-heading">
-						<h1>Brainstorming Benchmarks for Contextual Bandits</h1>
-						
-<span class="post-date">Feb 25, 2020</span>
-
-					</div>
-
-					<p>Since contextual bandits are relatively new, they haven&rsquo;t been studied and tested
+    <p>Since contextual bandits are relatively new, they haven&rsquo;t been studied and tested
 so heavily as standard multi-armed bandits algorithms [1]. This being
 the case, it&rsquo;s useful to design benchmarks for contextual bandits so these
 algorithms can be reliably tested, compared and improved.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
-<li><a href="https://renan-cunha.github.io/posts/contextual-bandits/"><strong><em>A Very Short Intro to Contextual Bandits</em></strong></a></li>
+<li><a href="/posts/contextual-bandits/"><strong><em>A Very Short Intro to Contextual Bandits</em></strong></a></li>
 </ul>
 <h2 id="simplest-benchmark">Simplest benchmark</h2>
 <p><a href="https://twitter.com/pcastr/status/1226661835971145731"><strong><em>Many</em></strong></a>
@@ -147,13 +86,13 @@ function is calculated given the observed context and the chosen action.</p>
 <li>Number of actions: 2</li>
 <li>Reward function pseudocode:</li>
 </ul>
-<pre><code>if context == 0
-    action 0 gives a reward of 1, other actions give 0 
-    rewards
-else
-    action 1 gives a reward of 1, other actions give 0 
-    rewards
-</code></pre><p>In this case, the best policy is to choose the $0^{th}$ action if the context is 0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if context == 0
+</span></span><span style="display:flex;"><span>    action 0 gives a reward of 1, other actions give 0 
+</span></span><span style="display:flex;"><span>    rewards
+</span></span><span style="display:flex;"><span>else
+</span></span><span style="display:flex;"><span>    action 1 gives a reward of 1, other actions give 0 
+</span></span><span style="display:flex;"><span>    rewards
+</span></span></code></pre></div><p>In this case, the best policy is to choose the $0^{th}$ action if the context is 0
 and choose the $1^{st}$ action otherwise, easy.</p>
 <h2 id="how-to-complicate">How to complicate</h2>
 <p>Now, let&rsquo;s try to gradually add complexity to this problem.</p>
@@ -165,13 +104,13 @@ for, let&rsquo;s add it to our environment.</p>
 <li>Number of actions: 2</li>
 <li>Reward function pseudocode:</li>
 </ul>
-<pre><code>if context == 0
-    action 0 returns a reward of 2 with 50% chance, other 
-    actions give 0 rewards
-else
-    action 1 returns a reward of 2 with 50% chance, other 
-    actions give 0 rewards
-</code></pre><p>Here, the best policy is still the same as in the previous environment, but
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if context == 0
+</span></span><span style="display:flex;"><span>    action 0 returns a reward of 2 with 50% chance, other 
+</span></span><span style="display:flex;"><span>    actions give 0 rewards
+</span></span><span style="display:flex;"><span>else
+</span></span><span style="display:flex;"><span>    action 1 returns a reward of 2 with 50% chance, other 
+</span></span><span style="display:flex;"><span>    actions give 0 rewards
+</span></span></code></pre></div><p>Here, the best policy is still the same as in the previous environment, but
 now, it should be harder for an algorithm to discover it. In this
 example, the reward is 2 because of the stochasticity, so the expected reward
 of each context can still be 1.</p>
@@ -185,13 +124,13 @@ the context possibilities to infinity!</p>
 <li>Number of actions: 2</li>
 <li>Reward function pseudocode:</li>
 </ul>
-<pre><code>if context &gt; 0.5
-    action 0 gives a reward of 2 with 50% chance, other 
-    actions give 0 rewards
-else
-    action 1 gives a reward of 2 with 50% chance, other 
-    actions give 0 rewards
-</code></pre><p>Note that we have to change the first <code>if</code> case of our reward function to
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if context &gt; 0.5
+</span></span><span style="display:flex;"><span>    action 0 gives a reward of 2 with 50% chance, other 
+</span></span><span style="display:flex;"><span>    actions give 0 rewards
+</span></span><span style="display:flex;"><span>else
+</span></span><span style="display:flex;"><span>    action 1 gives a reward of 2 with 50% chance, other 
+</span></span><span style="display:flex;"><span>    actions give 0 rewards
+</span></span></code></pre></div><p>Note that we have to change the first <code>if</code> case of our reward function to
 deal with the continuous feature. Instead of testing equality, we test if the
 context is greater than a threshold, in this case, 0.5.</p>
 <h3 id="other-ways">Other ways</h3>
@@ -235,39 +174,9 @@ should be easier for the algorithm to learn.</li>
 <li>[1] Cortes, David. “Adapting Multi-Armed Bandits Policies to Contextual Bandits Scenarios.” ArXiv:1811.04383 [Cs, Stat], Nov. 2019. arXiv.org, <a href="http://arxiv.org/abs/1811.04383">http://arxiv.org/abs/1811.04383</a>.</li>
 <li>[2] Bietti, Alberto, et al. “A Contextual Bandit Bake-Off.” ArXiv:1802.04064 [Cs, Stat], Jan. 2020. arXiv.org, <a href="http://arxiv.org/abs/1802.04064">http://arxiv.org/abs/1802.04064</a>.</li>
 </ul>
-<p>Next Article: <a href="https://renan-cunha.github.io/posts/greedy/"><strong><em>Solving Contextual Bandits with Greediness</em></strong></a>
-Previous Article: <a href="https://renan-cunha.github.io/posts/contextual-bandits/"><strong><em>A Very Short Intro to Contextual Bandits</em></strong></a></p>
 
+</article>
 
-				</div>
-
-			</div>
-			<div class="col-sm-1 col-md-3 col-md-4">
-			</div>
-		</div>
-	</div>
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-159089871-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-<script src="https://renan-cunha.github.io//js/bootstrap.min.js"></script>
-
-</body>
-</html>
+            </div>
+        </main>
+    </body></html>
