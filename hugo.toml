@@ -1,0 +1,4 @@
+baseURL = 'https://renan-cunnha.github.com/'
+languageCode = 'en-us'
+title = 'Renan F. Cunha'
+theme = 'nostyleplease'
