@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reinforcement Learning on Renan F. Cunha</title>
-    <link>https://renan-cunnha.github.com/categories/reinforcement-learning/</link>
+    <link>http://localhost:1313/categories/reinforcement-learning/</link>
     <description>Recent content in Reinforcement Learning on Renan F. Cunha</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 02 Mar 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://renan-cunnha.github.com/categories/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Solving Contextual Bandits with Greediness</title>
-      <link>https://renan-cunnha.github.com/posts/greedy/</link>
+      <link>http://localhost:1313/posts/greedy/</link>
       <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>https://renan-cunnha.github.com/posts/greedy/</guid>
+      <guid>http://localhost:1313/posts/greedy/</guid>
       <description>In this post, I will explain and implement Epsilon-Greedy, a simple algorithm that solves the contextual bandits problem. Despite its simplicity, this algorithm performs considerably well [1].&#xA;Prerequisites A Very Short Intro to Contextual Bandits Python Numpy (Optional) Standard Multi-Armed Bandit Epsilon-Greedy Algorithm [2] Logistic Regression (You need to know what it is, not necessarily how it works) * Note: In this article, I use the words arm and action, and the words step and round, interchangeably.</description>
     </item>
     <item>
       <title>Brainstorming Benchmarks for Contextual Bandits</title>
-      <link>https://renan-cunnha.github.com/posts/benchmark/</link>
+      <link>http://localhost:1313/posts/benchmark/</link>
       <pubDate>Tue, 25 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://renan-cunnha.github.com/posts/benchmark/</guid>
+      <guid>http://localhost:1313/posts/benchmark/</guid>
       <description>Since contextual bandits are relatively new, they haven&amp;rsquo;t been studied and tested so heavily as standard multi-armed bandits algorithms [1]. This being the case, it&amp;rsquo;s useful to design benchmarks for contextual bandits so these algorithms can be reliably tested, compared and improved.&#xA;Prerequisites A Very Short Intro to Contextual Bandits Simplest benchmark Many people in the AI community recommend the use of toy problems, these low complexity examples provide better and faster debugging cycles, a good property of early-stage research and experimentation.</description>
     </item>
     <item>
       <title>A Very Short Intro to Contextual Bandits</title>
-      <link>https://renan-cunnha.github.com/posts/contextual-bandits/</link>
+      <link>http://localhost:1313/posts/contextual-bandits/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://renan-cunnha.github.com/posts/contextual-bandits/</guid>
+      <guid>http://localhost:1313/posts/contextual-bandits/</guid>
       <description>In the contextual bandits problem, we have an environment with K possible actions. The environment returns some context x, taken from a distribution X. The environment also has a function f(x, k), that calculates the reward based on the context and the chosen action k.&#xA;The goal then is to find the policy $\pi$ that maximizes the rewards obtained in the long-term. A policy is a function that maps contexts to actions.</description>
     </item>
   </channel>

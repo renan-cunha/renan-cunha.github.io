@@ -2,52 +2,59 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Renan F. Cunha</title>
-    <link>https://renan-cunnha.github.com/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Renan F. Cunha</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Mar 2024 20:45:12 -0300</lastBuildDate>
-    <atom:link href="https://renan-cunnha.github.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Mar 2024 12:09:51 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>You Are in Excellent Shape If You...</title>
+      <link>http://localhost:1313/posts/you-are-in-excellent-shape-if/</link>
+      <pubDate>Sat, 30 Mar 2024 12:09:51 -0300</pubDate>
+      <guid>http://localhost:1313/posts/you-are-in-excellent-shape-if/</guid>
+      <description>Have a body fat percentage of less than 10.5% Have a VO2 max of greater than 57.1 (or can run for 12 minutes at a pace of at least 14 km/h) Can complete a single rep of bench press with 1.32 times your body weight Can complete a single rep of leg press with 2.05 times your body weight Can do at least 36 push-ups Reference: ACSM normative data for 20-29-year-old males.</description>
+    </item>
     <item>
       <title>The Perfect Tuesday</title>
-      <link>https://renan-cunnha.github.com/posts/perfect-tuesday/</link>
+      <link>http://localhost:1313/posts/perfect-tuesday/</link>
       <pubDate>Wed, 27 Mar 2024 20:45:12 -0300</pubDate>
-      <guid>https://renan-cunnha.github.com/posts/perfect-tuesday/</guid>
+      <guid>http://localhost:1313/posts/perfect-tuesday/</guid>
       <description>I tried to brainstorm the perfect Tuesday for myself, assuming I had no constraints. Here&amp;rsquo;s what I came up with:&#xA;Wake up naturally after a good night&amp;rsquo;s sleep Take in morning sunlight while riding my bike (minimum of 6km) Have a healthy breakfast Engage in some &amp;ldquo;reflection&amp;rdquo; over a cup of coffee Think of three things I am grateful for Review my goals Review my habits Review my principles Review Anki flashcards Have a study/work session Do a weightlifting workout session with stretching at the end Have a healthy lunch Have another study/work session Have a healthy snack Enjoy some free time Have a healthy dinner Enjoy more free time Practice sleep hygiene What surprised me is how achievable this is, even with some constraints.</description>
     </item>
     <item>
       <title>Why Exercise?</title>
-      <link>https://renan-cunnha.github.com/posts/why_exercise/</link>
+      <link>http://localhost:1313/posts/why_exercise/</link>
       <pubDate>Tue, 26 Mar 2024 20:43:48 -0300</pubDate>
-      <guid>https://renan-cunnha.github.com/posts/why_exercise/</guid>
+      <guid>http://localhost:1313/posts/why_exercise/</guid>
       <description>to experience the pleasure of an euphoric state to improve your daily mood to improve your energy levels to enjoy the skill acquisition/challenge to postpone your death to enable yourself to participate in other cool activities, such as: hiking surfing rowing etc to age well, maintaining independence rather than becoming disabled to increase your attractiveness You likely find value in all or some of these benefits, which are difficult to obtain without regular exercise.</description>
     </item>
     <item>
       <title>Knowledge and Discipline</title>
-      <link>https://renan-cunnha.github.com/posts/2024_03_knowledge_discipline/</link>
+      <link>http://localhost:1313/posts/2024_03_knowledge_discipline/</link>
       <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://renan-cunnha.github.com/posts/2024_03_knowledge_discipline/</guid>
+      <guid>http://localhost:1313/posts/2024_03_knowledge_discipline/</guid>
       <description>Imagine you want to reach a goal, such as being able to do 40 push-ups when you currently can only do 5.&#xA;I believe there are mainly three things you need to reach your goal: natural capacity (absence of serious physical limitations, etc.), knowledge, and discipline. You cannot change the first factor, so let&amp;rsquo;s focus on the latter two.&#xA;Knowledge helps you figure out what you need to do. Imagine GPT-100 exists and is omniscient.</description>
     </item>
     <item>
       <title>Solving Contextual Bandits with Greediness</title>
-      <link>https://renan-cunnha.github.com/posts/greedy/</link>
+      <link>http://localhost:1313/posts/greedy/</link>
       <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>https://renan-cunnha.github.com/posts/greedy/</guid>
+      <guid>http://localhost:1313/posts/greedy/</guid>
       <description>In this post, I will explain and implement Epsilon-Greedy, a simple algorithm that solves the contextual bandits problem. Despite its simplicity, this algorithm performs considerably well [1].&#xA;Prerequisites A Very Short Intro to Contextual Bandits Python Numpy (Optional) Standard Multi-Armed Bandit Epsilon-Greedy Algorithm [2] Logistic Regression (You need to know what it is, not necessarily how it works) * Note: In this article, I use the words arm and action, and the words step and round, interchangeably.</description>
     </item>
     <item>
       <title>Brainstorming Benchmarks for Contextual Bandits</title>
-      <link>https://renan-cunnha.github.com/posts/benchmark/</link>
+      <link>http://localhost:1313/posts/benchmark/</link>
       <pubDate>Tue, 25 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://renan-cunnha.github.com/posts/benchmark/</guid>
+      <guid>http://localhost:1313/posts/benchmark/</guid>
       <description>Since contextual bandits are relatively new, they haven&amp;rsquo;t been studied and tested so heavily as standard multi-armed bandits algorithms [1]. This being the case, it&amp;rsquo;s useful to design benchmarks for contextual bandits so these algorithms can be reliably tested, compared and improved.&#xA;Prerequisites A Very Short Intro to Contextual Bandits Simplest benchmark Many people in the AI community recommend the use of toy problems, these low complexity examples provide better and faster debugging cycles, a good property of early-stage research and experimentation.</description>
     </item>
     <item>
       <title>A Very Short Intro to Contextual Bandits</title>
-      <link>https://renan-cunnha.github.com/posts/contextual-bandits/</link>
+      <link>http://localhost:1313/posts/contextual-bandits/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://renan-cunnha.github.com/posts/contextual-bandits/</guid>
+      <guid>http://localhost:1313/posts/contextual-bandits/</guid>
       <description>In the contextual bandits problem, we have an environment with K possible actions. The environment returns some context x, taken from a distribution X. The environment also has a function f(x, k), that calculates the reward based on the context and the chosen action k.&#xA;The goal then is to find the policy $\pi$ that maximizes the rewards obtained in the long-term. A policy is a function that maps contexts to actions.</description>
     </item>
   </channel>
