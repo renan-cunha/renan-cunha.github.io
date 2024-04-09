@@ -1,5 +1,5 @@
 +++
-title = 'You Are in Excellent Shape If You...'
+title = 'You are in Excellent Shape If You...'
 date = 2024-03-30T12:09:51-03:00
 +++
 
