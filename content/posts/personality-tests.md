@@ -3,7 +3,7 @@ title = 'Are Personality Tests Better than Astrology?'
 date = 2024-06-07T21:38:52-03:00
 +++
 
-It seems so, at least for some things. A study explored whether some popular personality tests (a MBTI-inspired and the Big Five) could predict[^1] certain life outcomes, comparing these tests against astrology.
+It seems so, at least for some things. A [study](https://www.clearerthinking.org/post/how-accurate-are-popular-personality-test-frameworks-at-predicting-life-outcomes-a-detailed-investi) explored whether some popular personality tests (a MBTI-inspired and the Big Five) could predict[^1] certain life outcomes, comparing these tests against astrology.
 
 While, unsurprisingly, astrology performed no better than random chance, the personality tests had a weak but existing predictive power. The Big Five model was the best, explaining about 6% of the variance in various life outcomes, while the MBTI-inspired explained only 1.2% of the variance. However, for some specific life outcomes, the Big Five was much better. The test could explain up to 32% of the variance for ‘life satisfaction’.
 
