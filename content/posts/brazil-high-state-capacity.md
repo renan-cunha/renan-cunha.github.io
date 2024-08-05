@@ -31,7 +31,7 @@ The impact has been profound:
 
 ![https://mms.businesswire.com/media/20230725094936/en/1849127/5/Pix_vs_credit_vs_debit_over_time.jpg](https://mms.businesswire.com/media/20230725094936/en/1849127/5/Pix_vs_credit_vs_debit_over_time.jpg)
 
-PIX's success lies in its universal adoption (mandated for all major financial institutions) and user-friendly design (you can transfer money just like you send a phone message). It demonstrates how good regulation and technology can work together to surpass traditional development stages.
+PIX's success lies in its universal adoption (mandated for all major financial institutions) and user-friendly design (you can transfer money just like you send a phone message). It demonstrates how good regulation and technology can work well, even (or especially) in development countries.
 
 ### 3. The Real Plan: Taming Hyperinflation
 
@@ -43,7 +43,10 @@ The plan's innovative approach included:
 - Strict monetary policies to control the money supply
 - Fiscal reforms to address budget deficits
 
-![https://blogs.iadb.org/ideas-matter/wp-content/uploads/sites/12/2019/05/fig1_english-1024x512-1.png](https://blogs.iadb.org/ideas-matter/wp-content/uploads/sites/12/2019/05/fig1_english-1024x512-1.png)
+
+| ![https://blogs.iadb.org/ideas-matter/wp-content/uploads/sites/12/2019/05/fig1_english-1024x512-1.png](https://blogs.iadb.org/ideas-matter/wp-content/uploads/sites/12/2019/05/fig1_english-1024x512-1.png) | 
+|:--:| 
+| *Inflation per Month* |
 
 The Real Plan's success in bringing inflation from thousands of percent annually to single digits transformed Brazil's economic landscape, enabling long-term planning and investment that was previously impossible.
 
