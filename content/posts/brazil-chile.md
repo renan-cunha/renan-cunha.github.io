@@ -9,15 +9,10 @@ date = 2024-10-07T14:53:48Z
 - Life expectancy would rise from 72.8 to 78.9 years (+6).
 - The murder rate would drop from 22.38 to 3.63.
     - Around 38,000 murders would be prevented annually.
-- It could take between 7 and 14 years to get there, assuming a 4% to 8% yearly growth.*
-  - A long period, but at the same time, not that long.
+- It could take between 7 and 14 years to get there, assuming a 4% to 8% yearly growth[^1].
+  - A long period, but at the same time, not that long[^2].
+
+[^1]: This was the growth range of Poland, Singapore, and South Korea during their economic miracles.
+[^2]: I used metrics from Our World in Data.
 
 
-
-
-
----
-*This was the growth range of Poland, Singapore, and South Korea during their economic miracles.
-
-
-I used metrics from Our World in Data
