@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="See the METR analysis first1.
+Based solely on that analysis, the most defensible near-term prediction is:
+By 2028, AI systems will achieve 95–99% correctness on well-defined software tasks (≈ 4 human-hours) that can be auto-verified.
+Why this target? METR specifically selected “automatically scoreable, relatively clean, greenfield software tasks” for their study. On these task, the effective task length (i.e., human-time equivalence) that AI systems can reliably solve has been growing exponentially, with a doubling time of ~7 months.">  
+
+  <title>
+    
+      AIs doing 4-Hour Well-Defined Software Tasks by 2028
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.e6c6ad7f6873a1e65e553732d1474862d648641ca12a447a3090064ed82f37acd184ac97902a20c4adb079ea8e51f77cac1cb3b0d62818b77fc0bc54148863a2.css" integrity="sha512-5satf2hzoeZeVTcy0UdIYtZIZByhKkR6MJAGTtgvN6zRhKyXkCogxK2weeqOUfd8rByzsNYoGLd/wLxUFIhjog==" />
+  
+</head>
+<body a="dark">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <p class="post-meta">
+        <time datetime="2025-06-22 17:11:53 &#43;0000 UTC">
+            2025-06-22
+        </time>
+    </p>
+
+    <h1>AIs doing 4-Hour Well-Defined Software Tasks by 2028</h1>
+
+    
+
+    <p>See the METR analysis first<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<p>Based solely on that analysis, the most defensible near-term prediction is:</p>
+<blockquote>
+<p><strong>By 2028, AI systems will achieve 95–99% correctness on well-defined software tasks (≈ 4 human-hours) that can be auto-verified.</strong></p>
+</blockquote>
+<h3 id="why-this-target">Why this target?</h3>
+<p>METR specifically selected <strong>“automatically scoreable, relatively clean, greenfield software tasks”</strong> for their study. On these task, the effective task length (i.e., human-time equivalence) that AI systems can reliably solve has been growing <strong>exponentially</strong>, with a <strong>doubling time of ~7 months</strong>.</p>
+<p><img src="/img/metr-time-horizon.png" alt="metr-graph"></p>
+<h3 id="is-human-task-duration-a-good-proxy-for-ai-difficulty">Is human task duration a good proxy for AI difficulty?</h3>
+<p>Not perfectly, but there’s a moderate to strong correlation between human task duration and AI success rate. Two lines of evidence support this:</p>
+<ol>
+<li>
+<p><strong>METR’s findings</strong>:</p>
+<p>&ldquo;There is a negative correlation between the time it takes a human baseliner to complete a task and the average success rate (across all models) on the task&rdquo;.</p>
+</li>
+<li>
+<p><strong>Swe-Bench-Verified (OpenAI)</strong>:</p>
+<p>Success rates drop sharply as task time buckets increase. For example, GPT-4o with scaffolding solves <strong>~45% of &lt;15 min tasks</strong>, but <strong>&lt;5% of &gt;4-hour tasks</strong><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+</li>
+</ol>
+<h3 id="additional-details">Additional details</h3>
+<p>This prediction applies narrowly to <strong>“well-defined software tasks”</strong> for two reasons:</p>
+<ul>
+<li>
+<p><strong>RL training efficiency</strong>:</p>
+<p>Current reasoning models depend on &ldquo;tasks where solutions can be verified with low cost&rdquo;<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
+</li>
+<li>
+<p><strong>Domain-specific time horizons</strong>:</p>
+<p>It’s important not to overgeneralize this trend to other tasks. Progress timelines differ substantially across domains<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
+</li>
+</ul>
+<p>Also, this forecast is based on the faster trend observed over the past year, driven largely by the emergence of the reasoning models paradigm<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
+<p>Finally, it’s worth emphasizing that future progress could easily accelerate or decelerate<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</p>
+<h3 id="representative-tasks-likely-to-cross-the-95--threshold">Representative tasks likely to cross the 95 % threshold:</h3>
+<p>Here are a few examples of the kind of tasks we are talking about:</p>
+<ul>
+<li>Infer Function from Inputs and Outputs (1h30m)</li>
+<li>Fix Failing Test Cases in Small Library (1h30m)</li>
+<li>Clone A Black Box App (4h20m)</li>
+<li>Build Expert AI for Novel Board Game (7h30m)</li>
+</ul>
+<h3 id="bottom-line">Bottom line</h3>
+<p>Even with some caveats, this projection provides one additional quantitative signal of how quickly AI capabilities are increasing.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">Measuring AI Ability to Complete Long Tasks - METR Blog</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://openai.com/index/introducing-swe-bench-verified/">OpenAI: Swe-Bench-Verified</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://epoch.ai/gradient-updates/the-promise-of-reasoning-models">Epoch AI: The Promise of Reasoning Models</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://x.com/joel_bkr/status/1924870722633269726">X Post: Task Domain Time Horizons</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Trends using the past 1 year and the past 6 years for different accuracies: <a href="https://x.com/ldjconfirmed/status/1902803725585977434/photo/1">X Post: Projection visualization</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>One possible reason for a slowdown is that we don’t yet have long-form datasets, covering tasks that take hours or days, for training RL models: <a href="https://www.lesswrong.com/posts/LmGDeWhDo478ica4h/long-form-data-bottlenecks-might-stall-ai-progress-for-years#:~:text=I%20argue%20that%20the%20AI,rare%20opportunity%20for%20tractable%20governance">LessWrong: Long-Form Data Bottlenecks</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+</article>
+
+            </div>
+        </main>
+    </body></html>

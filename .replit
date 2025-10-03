@@ -1,0 +1,12 @@
+modules = ["web", "nodejs-20"]
+
+[nix]
+channel = "stable-24_05"
+
+[[ports]]
+localPort = 1313
+externalPort = 80
+exposeLocalhost = true
+
+[agent]
+expertMode = true

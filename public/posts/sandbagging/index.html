@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="One-line: Replicated the debate-improves-truth result; extended to N &gt; 2 debaters with sandbagging roles. Judge accuracy improves with more debaters, but decreases when N − 1 debaters on the correct-answer team are sandbagging.
+Why this matters Tests whether debate-style oversight can be subverted by strategic underperformance (sandbagging). Directly relevant to oversight-subversion benchmarks and collusion-style risks in automated regimes.
+TL;DR Replication: Debating with More Persuasive LLMs Leads to More Truthful Answers. Extension: N-debaters &#43; assigned sandbagger(s); measured effects on judge truth rate.">  
+
+  <title>
+    
+      Debate with Sandbagging: A Minimal Extension
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.e6c6ad7f6873a1e65e553732d1474862d648641ca12a447a3090064ed82f37acd184ac97902a20c4adb079ea8e51f77cac1cb3b0d62818b77fc0bc54148863a2.css" integrity="sha512-5satf2hzoeZeVTcy0UdIYtZIZByhKkR6MJAGTtgvN6zRhKyXkCogxK2weeqOUfd8rByzsNYoGLd/wLxUFIhjog==" />
+  
+</head>
+<body a="dark">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <p class="post-meta">
+        <time datetime="2025-10-02 00:17:40 &#43;0000 UTC">
+            2025-10-02
+        </time>
+    </p>
+
+    <h1>Debate with Sandbagging: A Minimal Extension</h1>
+
+    
+
+    <p><strong>One-line</strong>: Replicated the debate-improves-truth result; extended to N &gt; 2 debaters with sandbagging roles. Judge accuracy improves with more debaters, but decreases when N − 1 debaters on the correct-answer team are sandbagging.</p>
+<p><strong>Why this matters</strong>
+Tests whether debate-style oversight can be subverted by strategic underperformance (sandbagging). Directly relevant to oversight-subversion benchmarks and collusion-style risks in automated regimes.</p>
+<h2 id="tldr">TL;DR</h2>
+<ul>
+<li><strong>Replication</strong>: <a href="https://arxiv.org/pdf/2402.06782">Debating with More Persuasive LLMs Leads to More Truthful Answers</a>.</li>
+<li><strong>Extension</strong>: N-debaters + assigned sandbagger(s); measured effects on judge truth rate.</li>
+<li><strong>Findings</strong>:
+<ul>
+<li>Replication: More Persuasive LLM Debaters → More Truthful Answers</li>
+<li>Judge Accuracy Improves With More Debaters</li>
+<li>Sandbagging Hurts The Debate</li>
+</ul>
+</li>
+<li><strong>Limitation</strong>: Small scale (15 QuALITY questions, single run).</li>
+</ul>
+<h2 id="setup">Setup</h2>
+<ul>
+<li><strong>Models</strong>: gpt-4.1-mini and gpt-5-mini as debaters.</li>
+<li><strong>Data</strong>: Sample of 15 QuALITY questions, from the same dataset used in the original paper.</li>
+<li><strong>Debate Protocol</strong>:
+<ul>
+<li><strong>rounds</strong>=3</li>
+<li><strong>judge</strong>=gpt-4.1-mini</li>
+<li><strong>N debaters</strong>=If there are more than two debaters (N &gt; 2), they are divided into teams and alternate between rounds.</li>
+</ul>
+</li>
+<li><strong>Sandbagging Assignment</strong>: when sandbagged was assigned, N-1 debaters of the team arguing for the correct position were sandbagged. <a href="https://github.com/renan-cunha/llm_debate/blob/main/sandbag_prompt.txt">Sandbag prompt</a>
+<ul>
+<li><a href="https://arxiv.org/abs/2406.07358">AI Sandbagging: Language Models can Strategically Underperform on Evaluations</a>).</li>
+</ul>
+</li>
+<li><strong>Metrics</strong>: judge-truth%,</li>
+</ul>
+<h2 id="key-results">Key Results</h2>
+<h3 id="replication-more-persuasive-llm-debates--more-truthful-answers">Replication: More Persuasive LLM Debates → More Truthful Answers</h3>
+<p><img src="/img/chart.svg" alt=""></p>
+<p>Using a stronger debater model (GPT-5-mini vs. GPT-4.1-mini) led to higher judge accuracy.</p>
+<h3 id="judge-accuracy-improves-with-more-debaters">Judge Accuracy Improves With More Debaters</h3>
+<p><img src="/img/num_debaters.svg" alt=""></p>
+<p>Increasing the number of debaters (equivalent to the number of rounds) leads to higher judge accuracy.
+This finding differs from the original paper, where accuracy was found to remain stable or even decrease.
+One possible explanation for this difference is the fact that GPT-4.1-mini, which was used as the judge, handles larger contexts more effectively than GPT-4-Turbo that was used originally.</p>
+<h3 id="sandbagging-hurts-the-debate">Sandbagging Hurts The Debate</h3>
+<p><img src="/img/sandbag_chart.svg" alt=""></p>
+<p>Sandbagging decreases judge accuracy. Even though there is still one legitimate debater arguing for the correct answer, they lose ground as the number of sandbagging debaters on their team increases. This showcases the need to address sandbagging (and other potential collusion strategies) in debate and other automated oversight frameworks.</p>
+<h2 id="run">Run</h2>
+<ul>
+<li><a href="https://github.com/renan-cunha/llm_debate/blob/main">Repo</a></li>
+<li><a href="https://github.com/renan-cunha/llm_debate/blob/main/transcripts">A few debate transcripts</a></li>
+</ul>
+<hr>
+<p>This was my final project at the <a href="https://www.ml4good.org/">ML4Good Bootcamp</a>. Huge thanks to Alejandro Acelas, Carol Erthal, and Elvis Sikora for their helpful feedback!</p>
+
+</article>
+
+            </div>
+        </main>
+    </body></html>

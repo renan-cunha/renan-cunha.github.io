@@ -4,16 +4,86 @@
     <title>Posts on Renan F. Cunha</title>
     <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Renan F. Cunha</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 Apr 2024 19:59:40 -0300</lastBuildDate>
+    <lastBuildDate>Fri, 03 Oct 2025 00:17:40 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debate with Sandbagging: A Minimal Extension of “More Persuasive LLM Debaters → More Truthful Answers”</title>
+      <link>http://localhost:1313/posts/sandbagging/</link>
+      <pubDate>Fri, 03 Oct 2025 00:17:40 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sandbagging/</guid>
+      <description>One-line: Replicated the debate-improves-truth result; extended to N &amp;gt; 2 debaters with sandbagging roles. Judge accuracy improves with more debaters, but decreases when N − 1 debaters on the correct-answer team are sandbagging.&#xA;Why this matters Tests whether debate-style oversight can be subverted by strategic underperformance (sandbagging). Directly relevant to oversight-subversion benchmarks and collusion-style risks in automated regimes.&#xA;TL;DR Replication: Debating with More Persuasive LLMs Leads to More Truthful Answers. Extension: N-debaters + assigned sandbagger(s); measured effects on judge truth rate.</description>
+    </item>
+    <item>
+      <title>AIs doing 4-Hour Well-Defined Software Tasks by 2028</title>
+      <link>http://localhost:1313/posts/ai_software_2028_prediction/</link>
+      <pubDate>Sun, 22 Jun 2025 17:11:53 +0000</pubDate>
+      <guid>http://localhost:1313/posts/ai_software_2028_prediction/</guid>
+      <description>See the METR analysis first1.&#xA;Based solely on that analysis, the most defensible near-term prediction is:&#xA;By 2028, AI systems will achieve 95–99% correctness on well-defined software tasks (≈ 4 human-hours) that can be auto-verified.&#xA;Why this target? METR specifically selected “automatically scoreable, relatively clean, greenfield software tasks” for their study. On these task, the effective task length (i.e., human-time equivalence) that AI systems can reliably solve has been growing exponentially, with a doubling time of ~7 months.</description>
+    </item>
+    <item>
+      <title>What if Brazil were as good as Chile?</title>
+      <link>http://localhost:1313/posts/brazil-chile/</link>
+      <pubDate>Mon, 07 Oct 2024 14:53:48 +0000</pubDate>
+      <guid>http://localhost:1313/posts/brazil-chile/</guid>
+      <description>GDP per capita would jump from $15,093 to $25,886 (1.71x). It would become the 4th largest economy globally, after the US, China, and India. Life expectancy would rise from 72.8 to 78.9 years (+6). The murder rate would drop from 22.38 to 3.63. Around 38,000 murders would be prevented annually. It could take between 7 and 14 years to get there, assuming a 4% to 8% yearly growth1. A long period, but at the same time, not that long2.</description>
+    </item>
+    <item>
+      <title>The Transhumanist Religion</title>
+      <link>http://localhost:1313/posts/transhumanist-religion/</link>
+      <pubDate>Wed, 25 Sep 2024 23:45:59 +0000</pubDate>
+      <guid>http://localhost:1313/posts/transhumanist-religion/</guid>
+      <description>From Nick Bostrom&amp;rsquo;s &amp;ldquo;The Transhumanist FAQ&amp;rdquo;&#xA;While not a religion, transhumanism might serve a few of the same functions that people have traditionally sought in religion. It offers a sense of direction and purpose and suggests a vision that humans can achieve something greater than our present condition. Unlike most religious believers, however, transhumanists seek to make their dreams come true in this world, by relying not on supernatural powers or divine intervention but on rational thinking and empiricism, through continued scientific, technological, economic, and human development.</description>
+    </item>
+    <item>
+      <title>Examples of High State Capacity in Brazil</title>
+      <link>http://localhost:1313/posts/brazil-high-state-capacity/</link>
+      <pubDate>Mon, 05 Aug 2024 22:48:15 +0000</pubDate>
+      <guid>http://localhost:1313/posts/brazil-high-state-capacity/</guid>
+      <description>Three examples of high state capacity in Brazil:&#xA;1. The COVID-19 Vaccine Rollout: Speed and Scale When faced with the monumental task of vaccinating its population against COVID-19, Brazil&amp;rsquo;s healthcare system rose to the challenge with impressive efficiency. Despite initial political hurdles to getting the vaccine, the rollout proceeded incredibly once it began.&#xA;Key factors in this success included:&#xA;Leveraging existing infrastructure: Brazil&amp;rsquo;s Universal Health System (SUS) provided a robust framework for vaccine distribution.</description>
+    </item>
+    <item>
+      <title>What’s Your Hero’s Journey?</title>
+      <link>http://localhost:1313/posts/hero-journey/</link>
+      <pubDate>Fri, 02 Aug 2024 21:29:22 +0000</pubDate>
+      <guid>http://localhost:1313/posts/hero-journey/</guid>
+      <description>The Hero’s Journey, also known as the monomyth, is a narrative structure identified by mythologist Joseph Campbell. It describes a hero who embarks on an adventure, faces and overcomes a crisis, and returns transformed. This framework is ubiquitous, appearing in ancient myths, religious texts, and blockbusters like &amp;ldquo;Harry Potter&amp;rdquo; and &amp;ldquo;Star Wars.&amp;rdquo;&#xA;The journey typically involves several key stages:&#xA;Protagonist: The hero of the story, is often an ordinary person. Shift: A significant change that sets the hero on their path.</description>
+    </item>
+    <item>
+      <title>The Efficient Market Hypothesis Lie</title>
+      <link>http://localhost:1313/posts/efficient-market-lie/</link>
+      <pubDate>Fri, 02 Aug 2024 01:43:07 +0000</pubDate>
+      <guid>http://localhost:1313/posts/efficient-market-lie/</guid>
+      <description>The Efficient Market Hypothesis (EMH) states that all public (and maybe all private) information about an asset is already reflected in its price, making it impossible to consistently ‘beat the market’ since asset prices only react to new information.&#xA;If EMH is true, then it is impossible to predict stock prices, and you should probably be a passive investor (buying index funds). I used to believe that EMH was entirely accurate, but now I consider it a damn lie.</description>
+    </item>
+    <item>
+      <title>Hamming Questions of Your Life</title>
+      <link>http://localhost:1313/posts/hamming-life/</link>
+      <pubDate>Mon, 08 Jul 2024 13:09:12 -0300</pubDate>
+      <guid>http://localhost:1313/posts/hamming-life/</guid>
+      <description>Richard Hamming was famous for asking, &amp;ldquo;Which are the most important problems in your field? Why are you not working on them?&amp;rdquo; Inspired by him, I tried to think about the most important problems in life. Here is my attempt:&#xA;Which career should you pursue? How hard should you work? Where should you live? Which friends should you surround yourself with? With whom should you share your life? How many kids, if any, should you have?</description>
+    </item>
+    <item>
+      <title>Are Personality Tests Better than Astrology?</title>
+      <link>http://localhost:1313/posts/personality-tests/</link>
+      <pubDate>Fri, 07 Jun 2024 21:38:52 -0300</pubDate>
+      <guid>http://localhost:1313/posts/personality-tests/</guid>
+      <description>It seems so, at least for some things. A study explored whether some popular personality tests (a MBTI-inspired and the Big Five) could predict1 certain life outcomes, comparing these tests against astrology.&#xA;While, unsurprisingly, astrology performed no better than random chance, the personality tests had a weak but existing predictive power. The Big Five model was the best, explaining about 6% of the variance in various life outcomes, while the MBTI-inspired explained only 1.</description>
+    </item>
+    <item>
+      <title>A Successful Hunter-Gatherer</title>
+      <link>http://localhost:1313/posts/successfull-hunter-gatherer/</link>
+      <pubDate>Sat, 25 May 2024 21:51:15 -0300</pubDate>
+      <guid>http://localhost:1313/posts/successfull-hunter-gatherer/</guid>
+      <description>I recently watched the documentary &amp;ldquo;Hadza: Last of the First&amp;rdquo; which explores one of the few remaining hunter-gatherer tribes. After watching it, I wondered what makes someone &amp;ldquo;successful&amp;rdquo; in that environment. Humanity has spent most of its existence like that, so maybe we can draw valuable insights from this.&#xA;A successful male in this environment is a combination of being a good:&#xA;Hunter (provides for the community) Mentor (passes skills to younger generations) Mate (forms a long-term bond, raises a family) Leader (involves in community politics) To replicate that in modern society, you can:</description>
+    </item>
     <item>
       <title>Natural Limit</title>
       <link>http://localhost:1313/posts/natural-limit/</link>
       <pubDate>Tue, 16 Apr 2024 19:59:40 -0300</pubDate>
       <guid>http://localhost:1313/posts/natural-limit/</guid>
-      <description>Natural Limit In bodybuilding, there is the concept of the &amp;ldquo;natural limit&amp;rdquo;. This refers to the maximum potential you can achieve without the use of steroids.&#xA;There are some interesting points about this concept:&#xA;Genetics matter and act as your upper bound limit. Despite this, there is still significant room for improvement. For me, thinking in these terms has helped a lot; it releases some of the anxiety that I have when doubting whether I will be able to reach a goal.</description>
+      <description>In bodybuilding, there is the concept of the &amp;ldquo;natural limit&amp;rdquo;. It means the maximum potential you can achieve without the use of steroids.&#xA;There are some interesting points about this concept:&#xA;Genetics matter and act as your limiting factor. Despite this, there is still significant room for improvement. For me, thinking in these terms has helped a lot; it releases some of the anxiety that I have when doubting whether I will be able to reach a goal.</description>
     </item>
     <item>
       <title>Why Bodybuilding?</title>

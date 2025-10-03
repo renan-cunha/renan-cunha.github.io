@@ -2,10 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/natural-limit/</loc>
-    <lastmod>2024-04-16T19:59:40-03:00</lastmod>
+    <loc>http://localhost:1313/posts/sandbagging/</loc>
+    <lastmod>2025-10-03T00:17:40+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-10-03T00:17:40+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/ai_software_2028_prediction/</loc>
+    <lastmod>2025-06-22T17:11:53+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/brazil-chile/</loc>
+    <lastmod>2024-10-07T14:53:48+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/transhumanist-religion/</loc>
+    <lastmod>2024-09-25T23:45:59+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/brazil-high-state-capacity/</loc>
+    <lastmod>2024-08-05T22:48:15+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/hero-journey/</loc>
+    <lastmod>2024-08-02T21:29:22+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/efficient-market-lie/</loc>
+    <lastmod>2024-08-02T01:43:07+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/hamming-life/</loc>
+    <lastmod>2024-07-08T13:09:12-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/personality-tests/</loc>
+    <lastmod>2024-06-07T21:38:52-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/successfull-hunter-gatherer/</loc>
+    <lastmod>2024-05-25T21:51:15-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/natural-limit/</loc>
     <lastmod>2024-04-16T19:59:40-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/why-bodybuilding/</loc>
